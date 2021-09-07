@@ -4,6 +4,7 @@ import { Component, OnInit } from "@angular/core";
 import { ModalDialogParams } from "@nativescript/angular";
 import { AuthService } from "~/app/services/Auth/auth.service";
 import { firebase, firestore } from "@nativescript/firebase";
+import { ConfirmNewPasswordComponent } from "~/app/confirm-new-password/confirm-new-password.component";
 @Component({
   selector: "EditProfile",
   templateUrl: "./EditProfile.component.html",
@@ -14,6 +15,9 @@ export class EditProfileComponent implements OnInit {
   _number = "";
   userData;
   userDetails;
+
+  fullnameError = "";
+  contactNumError = "";
 
   constructor(
     private modalDialogParams: ModalDialogParams,
@@ -36,10 +40,11 @@ export class EditProfileComponent implements OnInit {
                 console.log("No such document!");
               }
             });
-          
+
       })
       .catch(error => console.log("Trouble in paradise: " + error));
   }
+
 
   onDrawerButtonTap(): void {
     const sideDrawer = <RadSideDrawer>Application.getRootView();
@@ -47,9 +52,24 @@ export class EditProfileComponent implements OnInit {
   }
 
   onUpdate() {
+    // console.log (
+    //   this._fullName,
+    //   this._number
+    // );
+
+    // if (this._fullName.length > 0)
+    // this.fullnameError = "";
+    if (this._fullName.length == 0)
+    this.fullnameError = "Full Name field is required";
+
+    if (this._number.length == 0)
+    this.contactNumError = "Contact Number field is required"
+    // if (this._number.length > 0)
+    // this.contactNumError = ""
+
+
     this.auth.editProfile(this._fullName, this._number, this.userData.uid);
     this.modalDialogParams.closeCallback();
   }
 
-  
 }

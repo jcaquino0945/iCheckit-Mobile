@@ -83,4 +83,10 @@ export class MyProfileComponent implements OnInit {
       console.log(res);
     });
   }
+  onLateTask() {
+    this.router.navigate(['/dashboard']);
+  }
+  onPendingTask() {
+    this.router.navigate(['/dashboard']);
+  }
 }

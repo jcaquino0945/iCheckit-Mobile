@@ -29,12 +29,13 @@
     </GridLayout>
 
     <FlexboxLayout flexDirection="column" class="main-content">
-      <GridLayout rows="auto, auto" columns="auto, *, *"> 
-        <StackLayout class="p-10 m-x-10 m-y-10 task-late" row="0" col="0">
+      <GridLayout rows="auto, auto" columns="auto, *, *">
+        <StackLayout class="p-10 m-x-10 m-y-10 task-late" row="0" col="0" (tap)="onLateTask()">
           <Label text="Late Tasks:" class="h3" textWrap="true"></Label>
           <Label text="10" class="h2" textWrap="true"></Label>
         </StackLayout>
-        <StackLayout class="p-10 m-x-10 m-y-10 task-pending" row="1" col="0">
+
+        <StackLayout class="p-10 m-x-10 m-y-10 task-pending" row="1" col="0" (tap)="onPendingTask()">
           <Label text="Pending Tasks:" class="h3" textWrap="true"> </Label>
           <Label text="10" class="h2" textWrap="true"></Label>
         </StackLayout>
@@ -127,7 +128,7 @@
               textWrap="true"
               class="delete-acc"
             ></Span>
-            
+
           </FormattedString>
         </Button>
       </FlexboxLayout>

@@ -18,12 +18,22 @@
     secure="False"
     [(ngModel)]="_fullName"
   ></TextField>
+  <Label
+  *ngIf="fullnameError"
+  text= "{{fullnameError}}"
+  class="login-error" >
+  </Label>
   <Label text="Contact Number" textWrap="true" class="h2"></Label>
   <TextField
     hint="{{ userDetails.contactNumber }}"
     secure="False"
     [(ngModel)]="_number"
   ></TextField>
+  <Label
+    *ngIf="contactNumError"
+    text= "{{contactNumError}}"
+    class="login-error" >
+  </Label>
   <Button
     class="btn btn-primary"
     text="Update Profile"

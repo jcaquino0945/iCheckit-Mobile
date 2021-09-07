@@ -170,6 +170,7 @@ export class AuthService {
             );
         },
         function(errorMessage) {
+          // alert("Account not updated, please fill out all the fields ")
           console.log(errorMessage);
         }
       );

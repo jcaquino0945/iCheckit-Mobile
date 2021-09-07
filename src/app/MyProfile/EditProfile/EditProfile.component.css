@@ -31,3 +31,9 @@ TextField {
     background-color: #35414F;
     color: white;
 }
+.login-error {
+    font-family: "Abel-Regular";
+    font-size: 8;
+    margin-left: 35;
+    color: red;
+}
