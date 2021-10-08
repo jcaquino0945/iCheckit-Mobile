@@ -17,61 +17,63 @@
     <TabView #tabView selectedTabTextColor="white" androidSelectedTabHighlightColor="red" androidTabsPosition="bottom" (selectedIndexChanged)="onSelectedIndexchanged(tabView.selectedIndex)" >
       <StackLayout *tabItem="{ iconSource: 'res://home' }">
         <ScrollView height="1000" *ngIf="myTasks">
-          <StackLayout class="task" *ngIf="userDetails.verified == 'Not Verified'">
-            <!-- <FlexboxLayout class="m-b-5 p-10" (tap)="onDetails(task.taskId)" *ngIf="verificationTask as task"> -->
-            <FlexboxLayout class="m-b-5 p-10" *ngIf="verificationTask as task" (tap)="navigate()">
-              <GridLayout columns="*,auto">
-                <FlexboxLayout col="0">
-                  <!-- <StackLayout>
-                    <Label text="{{ task.title }}" textWrap="true" class="task-details"></Label>
-                    <Label text="Term: {{ task.term }}" textWrap="true" class="task-deadline"></Label>
-                  </StackLayout> -->
-                  <StackLayout class="p-l-15 task-details-verify">
-                    <Label text="{{ task.title }}" textWrap="true"></Label>
-                    <Label text="Term: {{ task.term }}" textWrap="true" class="task-deadline"></Label>
+          <StackLayout>
+            <StackLayout class="task" *ngIf="userDetails.verified == 'Not Verified'">
+              <!-- <FlexboxLayout class="m-b-5 p-10" (tap)="onDetails(task.taskId)" *ngIf="verificationTask as task"> -->
+              <FlexboxLayout class="m-b-5 p-10" *ngIf="verificationTask as task" (tap)="navigate()">
+                <GridLayout columns="*,auto">
+                  <FlexboxLayout col="0">
+                    <!-- <StackLayout>
+                      <Label text="{{ task.title }}" textWrap="true" class="task-details"></Label>
+                      <Label text="Term: {{ task.term }}" textWrap="true" class="task-deadline"></Label>
+                    </StackLayout> -->
+                    <StackLayout class="p-l-15 task-details-verify">
+                      <Label text="{{ task.title }}" textWrap="true"></Label>
+                      <Label text="Term: {{ task.term }}" textWrap="true" class="task-deadline"></Label>
+                    </StackLayout>
+                  </FlexboxLayout>
+                </GridLayout>
+              </FlexboxLayout>
+            </StackLayout>
+            <StackLayout class="task" *ngIf="userDetails.verified == 'Enrolled'">
+              <FlexboxLayout class="m-b-5 p-10" (tap)="onDetails(task.taskId)" *ngFor="let task of myTasks">
+                <GridLayout columns="*,auto">
+                  <FlexboxLayout col="0">
+                    <!-- <Label text="" textWrap="true" class="rectangle-late" *ngIf="task.status == 'Late'"></Label>
+                    <Label text="" textWrap="true" class="rectangle-pending" *ngIf="task.status == 'Pending'"></Label>
+                    <Label text="" textWrap="true" class="rectangle-approval"
+                      *ngIf="task.status == 'For Approval'"></Label>
+                    <Label text="" textWrap="true" class="rectangle-ok" *ngIf="task.status == 'Accomplished'"></Label> -->
+                    <StackLayout class="p-l-15 task-details-accomplished" *ngIf="task.status == 'Accomplished'">
+                      <Label text="{{ task.title }}" textWrap="true"></Label>
+                      <Label text="Deadline: {{ task.deadline | date }}" textWrap="true" class="task-deadline"></Label>
+                    </StackLayout>
+                    <StackLayout class="p-l-15 task-details-approval" *ngIf="task.status == 'For Approval'">
+                      <Label text="{{ task.title }}" textWrap="true"></Label>
+                      <Label text="Deadline: {{ task.deadline | date }}" textWrap="true" class="task-deadline"></Label>
+                    </StackLayout>
+                    <StackLayout class="p-l-15 task-details-pending" *ngIf="task.status == 'Pending'">
+                      <Label text="{{ task.title }}" textWrap="true"></Label>
+                      <Label text="Deadline: {{ task.deadline | date }}" textWrap="true" class="task-deadline"></Label>
+                    </StackLayout>
+                    <StackLayout class="p-l-15 task-details-late" *ngIf="task.status == 'Late'">
+                      <Label text="{{ task.title }}" textWrap="true"></Label>
+                      <Label text="Deadline: {{ task.deadline | date }}" textWrap="true" class="task-deadline"></Label>
+                    </StackLayout>
+                  </FlexboxLayout>
+                  <StackLayout col="2" colSpan="2">
+                    <Label text="&#xf12a;" textWrap="true" class="fas h2 icon-late"
+                      *ngIf="task.status == 'Late'"></Label>
+                    <Label text="&#xf017;" textWrap="true" class="fas h2 icon-pending"
+                      *ngIf="task.status == 'Pending'"></Label>
+                    <Label text="&#xf254;" textWrap="true" class="fas h2 icon-approval"
+                      *ngIf="task.status == 'For Approval'"></Label>
+                    <Label text="&#xf00c;" textWrap="true" class="fas h2 icon-ok"
+                      *ngIf="task.status == 'Accomplished'"></Label>
                   </StackLayout>
-                </FlexboxLayout>
-              </GridLayout>
-            </FlexboxLayout>
-          </StackLayout>
-          <StackLayout class="task" *ngIf="userDetails.verified == 'Enrolled'">
-            <FlexboxLayout class="m-b-5 p-10" (tap)="onDetails(task.taskId)" *ngFor="let task of myTasks">
-              <GridLayout columns="*,auto">
-                <FlexboxLayout col="0">
-                  <!-- <Label text="" textWrap="true" class="rectangle-late" *ngIf="task.status == 'Late'"></Label>
-                  <Label text="" textWrap="true" class="rectangle-pending" *ngIf="task.status == 'Pending'"></Label>
-                  <Label text="" textWrap="true" class="rectangle-approval"
-                    *ngIf="task.status == 'For Approval'"></Label>
-                  <Label text="" textWrap="true" class="rectangle-ok" *ngIf="task.status == 'Accomplished'"></Label> -->
-                  <StackLayout class="p-l-15 task-details-accomplished" *ngIf="task.status == 'Accomplished'">
-                    <Label text="{{ task.title }}" textWrap="true"></Label>
-                    <Label text="Deadline: {{ task.deadline | date }}" textWrap="true" class="task-deadline"></Label>
-                  </StackLayout>
-                  <StackLayout class="p-l-15 task-details-approval" *ngIf="task.status == 'For Approval'">
-                    <Label text="{{ task.title }}" textWrap="true"></Label>
-                    <Label text="Deadline: {{ task.deadline | date }}" textWrap="true" class="task-deadline"></Label>
-                  </StackLayout>
-                  <StackLayout class="p-l-15 task-details-pending" *ngIf="task.status == 'Pending'">
-                    <Label text="{{ task.title }}" textWrap="true"></Label>
-                    <Label text="Deadline: {{ task.deadline | date }}" textWrap="true" class="task-deadline"></Label>
-                  </StackLayout>
-                  <StackLayout class="p-l-15 task-details-late" *ngIf="task.status == 'Late'">
-                    <Label text="{{ task.title }}" textWrap="true"></Label>
-                    <Label text="Deadline: {{ task.deadline | date }}" textWrap="true" class="task-deadline"></Label>
-                  </StackLayout>
-                </FlexboxLayout>
-                <StackLayout col="2" colSpan="2">
-                  <Label text="&#xf12a;" textWrap="true" class="fas h2 icon-late"
-                    *ngIf="task.status == 'Late'"></Label>
-                  <Label text="&#xf017;" textWrap="true" class="fas h2 icon-pending"
-                    *ngIf="task.status == 'Pending'"></Label>
-                  <Label text="&#xf254;" textWrap="true" class="fas h2 icon-approval"
-                    *ngIf="task.status == 'For Approval'"></Label>
-                  <Label text="&#xf00c;" textWrap="true" class="fas h2 icon-ok"
-                    *ngIf="task.status == 'Accomplished'"></Label>
-                </StackLayout>
-              </GridLayout>
-            </FlexboxLayout>
+                </GridLayout>
+              </FlexboxLayout>
+            </StackLayout>
           </StackLayout>
         </ScrollView>
       </StackLayout>

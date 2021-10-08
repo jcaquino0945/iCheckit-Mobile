@@ -1,5 +1,5 @@
 {
-    "using_ios": false,
+    "using_ios": true,
     "using_android": true,
     "analytics": true,
     "firestore": true,
