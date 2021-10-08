@@ -5,68 +5,70 @@
 a-->
 
 
-<FlexboxLayout class="page">
-    <Image src="~/app/images/USTBackground.png" stretch="aspectFill" class="bg-image"></Image>
-</FlexboxLayout>
-
-<ScrollView>
-    <FlexboxLayout class="form">
-        <StackLayout>
-            <Image class="logo" src="~/app/images/logo.png"></Image>
-            <Label class="header" text="Proceed with your"></Label>
-            <Label class="header-login" text="Login"></Label>
-
-            <form [formGroup]="loginForm">
-
-                <StackLayout class="input-field">
-
-                    <!-- <Label text="Use your UST account email" *ngIf="loginForm.controls._email.errors?.pattern" class="validation-error"></Label> -->
-
-                    <Label text="This Field is Required"
-                        *ngIf="loginForm.controls._email.errors?.required && loginForm.controls._email.touched"
-                        class="validation-error"></Label>
-
-                    <GridLayout columns="*, *, auto" rows="auto, auto" colspan="2" class="m-y-10">
-
-                        <Label text="Email" class="email-text"></Label>
-                        <TextField class="input" hint="Enter your email" colspan="2" formControlName="_email">
-                        </TextField>
-                        <StackLayout class="hr-light"></StackLayout>
-                        <Label class="fas" text="&#xf2bd;" colspan="2"></Label>
-
-                    </GridLayout>
-
-                    <Label text="This field is required"
-                        *ngIf="loginForm.controls._password.errors?.required && loginForm.controls._password.touched || loginForm.controls._password.errors?.email"
-                        class="validation-error"></Label>
-
-                    <GridLayout columns="auto, *, auto" colspan="2" rows="auto, 1" class="m-y-10">
-
-                        <Label text="Password" class="password-text"></Label>
-                        <TextField #passwordField class="input" hint="Enter your password" secure="True" colspan="2"
-                            formControlName="_password">
-                        </TextField>
-                        <Label class="fas" text="&#xf06e;" colspan="2" *ngIf="!isToggled" (tap)="toggleShow()"></Label>
-                        <Label class="fas" text="&#xf070;" colspan="2" *ngIf="isToggled" (tap)="toggleShow()"></Label>
-                        <StackLayout class="hr-light"></StackLayout>
-                    </GridLayout>
-                </StackLayout>
-
-                <StackLayout class="input-field">
-                    <button text="Login" class="btn btn-primary" *ngIf="loginForm.valid" (tap)="tapLogin()"></button>
-                    <button text="Login" class="btn btn-primary-disabled" *ngIf="loginForm.invalid"
-                        (tap)="tapLogin()"></button>
-                </StackLayout>
-                <Label text="Forgot password?" class="m-y-10 login-label-forgotPass" (tap)="tapforgotPass()"></Label>
-                <Label text="Create Account" class="login-label-createAcc" (tap)="tapcreateAcc()"></Label>
-
-                <StackLayout orientation="horizontal" class="m-y-30 cics">
-                    <Image src="~/app/images/logo.png" class="logo-btm"></Image>
-                    <Label text="" textWrap="true" class="m-x-10 rectangle"></Label>
-                    <Image src="~/app/images/cics.png" class="logo-btm"></Image>
-                </StackLayout>
-
-            </form>
-        </StackLayout>
+<StackLayout>
+    <FlexboxLayout class="page">
+        <Image src="~/app/images/USTBackground.png" stretch="aspectFill" class="bg-image"></Image>
     </FlexboxLayout>
-</ScrollView>
+    
+    <ScrollView>
+        <FlexboxLayout class="form">
+            <StackLayout>
+                <Image class="logo" src="~/app/images/logo.png"></Image>
+                <Label class="header" text="Proceed with your"></Label>
+                <Label class="header-login" text="Login"></Label>
+    
+                <form [formGroup]="loginForm">
+    
+                    <StackLayout class="input-field">
+    
+                        <!-- <Label text="Use your UST account email" *ngIf="loginForm.controls._email.errors?.pattern" class="validation-error"></Label> -->
+    
+                        <Label text="This Field is Required"
+                            *ngIf="loginForm.controls._email.errors?.required && loginForm.controls._email.touched"
+                            class="validation-error"></Label>
+    
+                        <GridLayout columns="*, *, auto" rows="auto, auto" colspan="2" class="m-y-10">
+    
+                            <Label text="Email" class="email-text"></Label>
+                            <TextField class="input" hint="Enter your email" colspan="2" formControlName="_email">
+                            </TextField>
+                            <StackLayout class="hr-light"></StackLayout>
+                            <Label class="fas" text="&#xf2bd;" colspan="2"></Label>
+    
+                        </GridLayout>
+    
+                        <Label text="This field is required"
+                            *ngIf="loginForm.controls._password.errors?.required && loginForm.controls._password.touched || loginForm.controls._password.errors?.email"
+                            class="validation-error"></Label>
+    
+                        <GridLayout columns="auto, *, auto" colspan="2" rows="auto, 1" class="m-y-10">
+    
+                            <Label text="Password" class="password-text"></Label>
+                            <TextField #passwordField class="input" hint="Enter your password" secure="True" colspan="2"
+                                formControlName="_password">
+                            </TextField>
+                            <Label class="fas" text="&#xf06e;" colspan="2" *ngIf="!isToggled" (tap)="toggleShow()"></Label>
+                            <Label class="fas" text="&#xf070;" colspan="2" *ngIf="isToggled" (tap)="toggleShow()"></Label>
+                            <StackLayout class="hr-light"></StackLayout>
+                        </GridLayout>
+                    </StackLayout>
+    
+                    <StackLayout class="input-field">
+                        <button text="Login" class="btn btn-primary" *ngIf="loginForm.valid" (tap)="tapLogin()"></button>
+                        <button text="Login" class="btn btn-primary-disabled" *ngIf="loginForm.invalid"
+                            (tap)="tapLogin()"></button>
+                    </StackLayout>
+                    <Label text="Forgot password?" class="m-y-10 login-label-forgotPass" (tap)="tapforgotPass()"></Label>
+                    <Label text="Create Account" class="login-label-createAcc" (tap)="tapcreateAcc()"></Label>
+    
+                    <StackLayout orientation="horizontal" class="m-y-30 cics">
+                        <Image src="~/app/images/logo.png" class="logo-btm"></Image>
+                        <Label text="" textWrap="true" class="m-x-10 rectangle"></Label>
+                        <Image src="~/app/images/cics.png" class="logo-btm"></Image>
+                    </StackLayout>
+    
+                </form>
+            </StackLayout>
+        </FlexboxLayout>
+    </ScrollView>
+</StackLayout>

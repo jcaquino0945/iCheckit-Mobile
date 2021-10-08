@@ -29,78 +29,80 @@
   </FlexboxLayout>
 </GridLayout> -->
 
-<ScrollView>
-  <StackLayout>
-    <GridLayout height="300">
-      <StackLayout class="top">
-        <Image src="~/app/images/USTBackground.png" stretch="aspectFill" class="top-img">
-        </Image>
-      </StackLayout>
-      <Label class="h2 fas p-10 nav-button" text="&#xf0c9;" (tap)="onDrawerButtonTap()"></Label>
-      <StackLayout class="section-1">
-        <Label text="Contact Us" textWrap="true" class="h1 title-1"></Label>
-        <Label text="{{ dateToday | date }}" textWrap="true" class="h2 date"></Label>
-      </StackLayout>
-    </GridLayout>
-
-    <FlexboxLayout flexDirection="column">
-      <StackLayout class="m-x-15 m-y-10 main-content">
-        <Label text="Dean" textWrap="true" class=" p-10 h3 title"></Label>
-        <GridLayout rows="auto" columns="230, *">
-          <Label text="Asst. Prof. Jerralyn T. Padua, MSCS" textWrap="true" class="p-10 " row="0" col="0"></Label>
-          <Label text="jlseno@ust.edu.ph" textWrap="true" class="p-10 " row="0" col="1"></Label>
-        </GridLayout>
-      </StackLayout>
-
-      <StackLayout class="m-x-15 m-y-10 main-content">
-        <Label text="College Secretary" textWrap="true" class=" p-10 h3 title"></Label>
-        <GridLayout rows="auto" columns="230, *">
-          <Label text="Asst. Prof. Divinagracia R. Mariano, MBA" textWrap="true" class="p-10 "
-            row="0" col="0"></Label>
-          <Label text="drmariano@ust.edu.ph" textWrap="true" class="p-10 " row="0" col="1"></Label>
-        </GridLayout>
-      </StackLayout>
-
-      <StackLayout class="m-x-15 m-y-10 main-content">
-        <Label text="Department Chairs" textWrap="true" class="p-10 h3 title"></Label>
-        <GridLayout rows="auto,auto,auto" columns="230,*">
-          <Label text="Asst. Prof. Jose L. Seño, MS (CS)" textWrap="true" class="p-10 " col="0" row="0"></Label>
-          <Label text="jlseno@ust.edu.ph" textWrap="true" class="p-10 " col="1" row="0"></Label>
-          <Label text="Asst. Prof. Arne B. Barcelo, MS (IS)" textWrap="true" class="p-10 " col="0" row="1"></Label>
-          <Label text="abbarcelo@ust.edu.ph" textWrap="true" class="p-10 " col="1" row="1"></Label>
-          <Label text="Asst. Prof. Rochelle Lynn L. Lopez (IT)" textWrap="true" class="p-10 " col="0" row="2"></Label>
-          <Label text="rllopez@ust.edu.ph" textWrap="true" class="p-10 " col="1" row="2"></Label>
-        </GridLayout>
-      </StackLayout>
-      
-      <StackLayout class="m-x-15 m-y-10 main-content">
-        <Label text="Support Staff" textWrap="true" class=" p-10 h3 title"></Label>
-        <GridLayout rows="auto, auto, auto" columns="230, *">
-          <Label text="Ms. Madonna Kho" textWrap="true" class="p-10 " row="0" col="0"></Label>
-          <Label text="mgkho@ust.edu.ph" textWrap="true" class="p-10 " row="0" col="1"></Label>
-          <Label text="Mr. Aristotle Garcia" textWrap="true" class="p-10 " row="1" col="0"></Label>
-          <Label text="abgarcia@ust.edu.ph" textWrap="true" class="p-10 " row="1" col="1"></Label>
-          <Label text="Ms. Roma Faith Gonzaga" textWrap="true" class="p-10 " row="2" col="0"></Label>
-          <Label text="rpgonzaga@ust.edu.ph" textWrap="true" class="p-10 " row="2" col="1"></Label>
-        </GridLayout>
-      </StackLayout>
-
-      
-
-      <StackLayout class="m-x-15 m-y-10 main-content">
-        <Label text="Photo Credit" textWrap="true" class=" p-10 h3 title"></Label>
-        <GridLayout rows="auto" columns="230, *">
-          <Label text="Fr. Dexter A. Austria, O.P" textWrap="true" class="p-10 " row="0" col="0"></Label>
-          <Label text="dexteraustria.op@ust.edu.ph" textWrap="true" class="p-10 " row="0" col="1"></Label>
-        </GridLayout>
-      </StackLayout>
-
-      <!-- <StackLayout orientation="horizontal" class="m-y-30 cics">
-        <Image src="~/app/images/logo.png" class="logo-btm"></Image>
-        <Label text="" textWrap="true" class="m-x-10 rectangle"></Label>
-        <Image src="~/app/images/cics.png" class="logo-btm"></Image>
-      </StackLayout> -->
-
-    </FlexboxLayout>
-  </StackLayout>
-</ScrollView>
+<StackLayout>
+  <ScrollView>
+    <StackLayout>
+      <GridLayout height="300">
+        <StackLayout class="top">
+          <Image src="~/app/images/USTBackground.png" stretch="aspectFill" class="top-img">
+          </Image>
+        </StackLayout>
+        <Label class="h2 fas p-10 nav-button" text="&#xf0c9;" (tap)="onDrawerButtonTap()"></Label>
+        <StackLayout class="section-1">
+          <Label text="Contact Us" textWrap="true" class="h1 title-1"></Label>
+          <Label text="{{ dateToday | date }}" textWrap="true" class="h2 date"></Label>
+        </StackLayout>
+      </GridLayout>
+  
+      <FlexboxLayout flexDirection="column">
+        <StackLayout class="m-x-15 m-y-10 main-content">
+          <Label text="Dean" textWrap="true" class=" p-10 h3 title"></Label>
+          <GridLayout rows="auto" columns="230, *">
+            <Label text="Asst. Prof. Jerralyn T. Padua, MSCS" textWrap="true" class="p-10 " row="0" col="0"></Label>
+            <Label text="jlseno@ust.edu.ph" textWrap="true" class="p-10 " row="0" col="1"></Label>
+          </GridLayout>
+        </StackLayout>
+  
+        <StackLayout class="m-x-15 m-y-10 main-content">
+          <Label text="College Secretary" textWrap="true" class=" p-10 h3 title"></Label>
+          <GridLayout rows="auto" columns="230, *">
+            <Label text="Asst. Prof. Divinagracia R. Mariano, MBA" textWrap="true" class="p-10 "
+              row="0" col="0"></Label>
+            <Label text="drmariano@ust.edu.ph" textWrap="true" class="p-10 " row="0" col="1"></Label>
+          </GridLayout>
+        </StackLayout>
+  
+        <StackLayout class="m-x-15 m-y-10 main-content">
+          <Label text="Department Chairs" textWrap="true" class="p-10 h3 title"></Label>
+          <GridLayout rows="auto,auto,auto" columns="230,*">
+            <Label text="Asst. Prof. Jose L. Seño, MS (CS)" textWrap="true" class="p-10 " col="0" row="0"></Label>
+            <Label text="jlseno@ust.edu.ph" textWrap="true" class="p-10 " col="1" row="0"></Label>
+            <Label text="Asst. Prof. Arne B. Barcelo, MS (IS)" textWrap="true" class="p-10 " col="0" row="1"></Label>
+            <Label text="abbarcelo@ust.edu.ph" textWrap="true" class="p-10 " col="1" row="1"></Label>
+            <Label text="Asst. Prof. Rochelle Lynn L. Lopez (IT)" textWrap="true" class="p-10 " col="0" row="2"></Label>
+            <Label text="rllopez@ust.edu.ph" textWrap="true" class="p-10 " col="1" row="2"></Label>
+          </GridLayout>
+        </StackLayout>
+        
+        <StackLayout class="m-x-15 m-y-10 main-content">
+          <Label text="Support Staff" textWrap="true" class=" p-10 h3 title"></Label>
+          <GridLayout rows="auto, auto, auto" columns="230, *">
+            <Label text="Ms. Madonna Kho" textWrap="true" class="p-10 " row="0" col="0"></Label>
+            <Label text="mgkho@ust.edu.ph" textWrap="true" class="p-10 " row="0" col="1"></Label>
+            <Label text="Mr. Aristotle Garcia" textWrap="true" class="p-10 " row="1" col="0"></Label>
+            <Label text="abgarcia@ust.edu.ph" textWrap="true" class="p-10 " row="1" col="1"></Label>
+            <Label text="Ms. Roma Faith Gonzaga" textWrap="true" class="p-10 " row="2" col="0"></Label>
+            <Label text="rpgonzaga@ust.edu.ph" textWrap="true" class="p-10 " row="2" col="1"></Label>
+          </GridLayout>
+        </StackLayout>
+  
+        
+  
+        <StackLayout class="m-x-15 m-y-10 main-content">
+          <Label text="Photo Credit" textWrap="true" class=" p-10 h3 title"></Label>
+          <GridLayout rows="auto" columns="230, *">
+            <Label text="Fr. Dexter A. Austria, O.P" textWrap="true" class="p-10 " row="0" col="0"></Label>
+            <Label text="dexteraustria.op@ust.edu.ph" textWrap="true" class="p-10 " row="0" col="1"></Label>
+          </GridLayout>
+        </StackLayout>
+  
+        <!-- <StackLayout orientation="horizontal" class="m-y-30 cics">
+          <Image src="~/app/images/logo.png" class="logo-btm"></Image>
+          <Label text="" textWrap="true" class="m-x-10 rectangle"></Label>
+          <Image src="~/app/images/cics.png" class="logo-btm"></Image>
+        </StackLayout> -->
+  
+      </FlexboxLayout>
+    </StackLayout>
+  </ScrollView>
+</StackLayout>

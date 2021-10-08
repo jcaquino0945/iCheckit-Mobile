@@ -3,73 +3,75 @@ RadSideDrawer is a UI component part of the Progress NativeScript UI set of comp
 Learn more about the RadSideDrawer UI component and how it can be customized in this documentation article:
 https://docs.nativescript.org/angular/ui/professional-ui-components/ng-SideDrawer/getting-started
 -->
-<RadSideDrawer [drawerTransition]="sideDrawerTransition">
-  <GridLayout tkDrawerContent rows="auto, *, auto, auto" class="nt-drawer__content">
-    <StackLayout row="0" class="p-10 header">
-      <GridLayout columns="*,*">
-        <Label class="name" text="Name" col="0"></Label>
-        <Label class="section" text="Section" col="1"></Label>
-      </GridLayout>
-    </StackLayout>
-
-    <ScrollView row="1" class="nt-drawer__body">
-      <StackLayout>
-        <GridLayout columns="auto, *" class="nt-drawer__list-item nav-item"
-          [class.-selected]="isComponentSelected('/dashboard')" (tap)="onNavItemTap('/dashboard')">
-          <Label col="0" text="&#xf46d;" class="nt-icon fas h3"></Label>
-          <Label col="1" text="My Tasks" class="p-r-10s h3 item"></Label>
+<StackLayout>
+  <RadSideDrawer [drawerTransition]="sideDrawerTransition">
+    <GridLayout tkDrawerContent rows="auto, *, auto, auto" class="nt-drawer__content">
+      <StackLayout row="0" class="p-10 header">
+        <GridLayout columns="*,*">
+          <Label class="name" text="Name" col="0"></Label>
+          <Label class="section" text="Section" col="1"></Label>
         </GridLayout>
-
-        <!-- dagdag to start-->
-        <!-- <GridLayout
-          columns="auto, *"
-          class="nt-drawer__list-item"
-          [class.-selected]="isComponentSelected('/login')"
-          (tap)="onNavItemTap('/login')"
-        >
-          <Label col="0" text="&#xf015;" class="nt-icon fas"></Label>
-          <Label col="1" text="Login" class="p-r-10"></Label>
-        </GridLayout> -->
-        <!-- dagdag to end-->
-
-        <GridLayout columns="auto, *" class="nt-drawer__list-item m-t-10 nav-item"
-          [class.-selected]="isComponentSelected('/my-profile')" (tap)="onNavItemTap('/my-profile')">
-          <Label col="0" text="&#xf2bd;" class="nt-icon fas h3"></Label>
-          <Label col="1" text="My Profile" class="p-r-10 h3 item"></Label>
-        </GridLayout>
-
-        <GridLayout columns="auto, *" class="nt-drawer__list-item m-t-10 nav-item"
-          [class.-selected]="isComponentSelected('/faqs')" (tap)="onNavItemTap('/faqs')">
-          <Label col="0" text="&#xf086;" class="nt-icon fas h3"></Label>
-          <Label col="1" text="Frequently Asked Questions" class="p-r-10s h3 item"></Label>
-        </GridLayout>
-
-        <GridLayout columns="auto, *" class="nt-drawer__list-item m-t-10 nav-item"
-          [class.-selected]="isComponentSelected('/contact-us')" (tap)="onNavItemTap('/contact-us')">
-          <Label col="0" text="&#xf2b9;" class="nt-icon fas h3"></Label>
-          <Label col="1" text="Contact Us" class="p-r-10s h3 item"></Label>
-        </GridLayout>
-
-        <GridLayout columns="auto, *" class="nt-drawer__list-item m-t-10 nav-item-logout" (tap)="onLogout()">
-          <Label col="0" text="&#xf14d;" class="nt-icon fas h3 icon"></Label>
-          <Label col="1" text="Logout" class="p-r-10s h3 item-logout"></Label>
-        </GridLayout>
-
-        <!-- <StackLayout orientation="horizontal" class="m-y-30 cics">
-          <Image class="logo" src="~/app/images/logo.png"></Image>
-          <Label text="" textWrap="true" class="m-x-10 rectangle"></Label>
-          <Label text="College of Information and Computing Sciences" textWrap="true" class="m-t-10 cics-label"></Label>
-        </StackLayout> -->
-
       </StackLayout>
-    </ScrollView>
-    <StackLayout class="cics" row="2">
-      <Image src="~/app/images/cics.png" class="logo-btm"></Image>
-    </StackLayout>
-    <StackLayout class="m-b-10" row="3">
-      <Label class="p-10 cics-label" text="College of Information and Computing Sciences" textWrap="true"></Label>
-    </StackLayout>
-  </GridLayout>
-
-  <page-router-outlet tkMainContent actionBarVisibility="never"></page-router-outlet>
-</RadSideDrawer>
+  
+      <ScrollView row="1" class="nt-drawer__body">
+        <StackLayout>
+          <GridLayout columns="auto, *" class="nt-drawer__list-item nav-item"
+            [class.-selected]="isComponentSelected('/dashboard')" (tap)="onNavItemTap('/dashboard')">
+            <Label col="0" text="&#xf46d;" class="nt-icon fas h3"></Label>
+            <Label col="1" text="My Tasks" class="p-r-10s h3 item"></Label>
+          </GridLayout>
+  
+          <!-- dagdag to start-->
+          <!-- <GridLayout
+            columns="auto, *"
+            class="nt-drawer__list-item"
+            [class.-selected]="isComponentSelected('/login')"
+            (tap)="onNavItemTap('/login')"
+          >
+            <Label col="0" text="&#xf015;" class="nt-icon fas"></Label>
+            <Label col="1" text="Login" class="p-r-10"></Label>
+          </GridLayout> -->
+          <!-- dagdag to end-->
+  
+          <GridLayout columns="auto, *" class="nt-drawer__list-item m-t-10 nav-item"
+            [class.-selected]="isComponentSelected('/my-profile')" (tap)="onNavItemTap('/my-profile')">
+            <Label col="0" text="&#xf2bd;" class="nt-icon fas h3"></Label>
+            <Label col="1" text="My Profile" class="p-r-10 h3 item"></Label>
+          </GridLayout>
+  
+          <GridLayout columns="auto, *" class="nt-drawer__list-item m-t-10 nav-item"
+            [class.-selected]="isComponentSelected('/faqs')" (tap)="onNavItemTap('/faqs')">
+            <Label col="0" text="&#xf086;" class="nt-icon fas h3"></Label>
+            <Label col="1" text="Frequently Asked Questions" class="p-r-10s h3 item"></Label>
+          </GridLayout>
+  
+          <GridLayout columns="auto, *" class="nt-drawer__list-item m-t-10 nav-item"
+            [class.-selected]="isComponentSelected('/contact-us')" (tap)="onNavItemTap('/contact-us')">
+            <Label col="0" text="&#xf2b9;" class="nt-icon fas h3"></Label>
+            <Label col="1" text="Contact Us" class="p-r-10s h3 item"></Label>
+          </GridLayout>
+  
+          <GridLayout columns="auto, *" class="nt-drawer__list-item m-t-10 nav-item-logout" (tap)="onLogout()">
+            <Label col="0" text="&#xf14d;" class="nt-icon fas h3 icon"></Label>
+            <Label col="1" text="Logout" class="p-r-10s h3 item-logout"></Label>
+          </GridLayout>
+  
+          <!-- <StackLayout orientation="horizontal" class="m-y-30 cics">
+            <Image class="logo" src="~/app/images/logo.png"></Image>
+            <Label text="" textWrap="true" class="m-x-10 rectangle"></Label>
+            <Label text="College of Information and Computing Sciences" textWrap="true" class="m-t-10 cics-label"></Label>
+          </StackLayout> -->
+  
+        </StackLayout>
+      </ScrollView>
+      <StackLayout class="cics" row="2">
+        <Image src="~/app/images/cics.png" class="logo-btm"></Image>
+      </StackLayout>
+      <StackLayout class="m-b-10" row="3">
+        <Label class="p-10 cics-label" text="College of Information and Computing Sciences" textWrap="true"></Label>
+      </StackLayout>
+    </GridLayout>
+  
+    <page-router-outlet tkMainContent actionBarVisibility="never"></page-router-outlet>
+  </RadSideDrawer>
+</StackLayout>
