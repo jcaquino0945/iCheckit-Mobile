@@ -1,70 +1,72 @@
-<ScrollView>
-  <StackLayout>
-    <GridLayout height="300">
-      <StackLayout class="top">
-        <Image src="~/app/images/USTBackground.png" stretch="aspectFill" class="top-img">
-        </Image>
-      </StackLayout>
-      <Label class="h2 fas p-10 nav-button" text="&#xf0c9;" (tap)="onDrawerButtonTap()"></Label>
-      <StackLayout class="section-1">
-        <Image class="nt-drawer__header-image fas prof-img" src="font://&#xf2bd;"></Image>
-        <Label text="{{ userDetails.displayName }}" textWrap="true" class="m-b-30 h1 prof-name"></Label>
-      </StackLayout>
-    </GridLayout>
-
-    <FlexboxLayout flexDirection="column" class="main-content">
-      <GridLayout rows="auto, auto" columns="auto, *, *">
-        <StackLayout class="p-10 m-x-10 m-y-10 task-late" row="0" col="0">
-          <Label text="Late Tasks:" class="h3" textWrap="true"></Label>
-          <Label text="{{myLateTasks.length}}" class="h2" textWrap="true"></Label>
+<StackLayout>
+  <ScrollView>
+    <StackLayout>
+      <GridLayout height="300">
+        <StackLayout class="top">
+          <Image src="~/app/images/USTBackground.png" stretch="aspectFill" class="top-img">
+          </Image>
         </StackLayout>
-        <StackLayout class="p-10 m-x-10 m-y-10 task-pending" row="1" col="0">
-          <Label text="Pending Tasks:" class="h3" textWrap="true"> </Label>
-          <Label text="{{myPendingTasks.length}}" class="h2" textWrap="true"></Label>
-        </StackLayout>
-
-        <StackLayout class="p-10 m-x-10 m-y-10 info" col="1" colSpan="2">
-          <Label text="My Personal Information" class="h2" textWrap="true"></Label>
-          <Label text="Full Name: {{ userDetails.displayName }}" textWrap="true"></Label>
-          <Label text="Course: {{ userDetails.course }}" textWrap="true"></Label>
-          <Label text="Section: {{ userDetails.section }}" textWrap="true"></Label>
-          <Label text="Email: {{ userDetails.email }}" textWrap="true"></Label>
-          <Label text="Contact Number: {{ userDetails.contactNumber }}" textWrap="true"></Label>
-        </StackLayout>
-
-        <StackLayout class="p-10 m-x-10 m-y-10 info" col="1" row="1">
-          <Label text="Account &#xa;Type: &#xa;" textWrap="true" class="h3"></Label>
-          <Label text="Student" textWrap="true" class="h1 num"></Label>
-        </StackLayout>
-        <StackLayout class="p-10 m-x-10 m-y-10 info" col="2" row="1">
-          <Label text="Verification &#xa;Status: &#xa;" textWrap="true" class="h3"></Label>
-          <Label text="{{userDetails.verified}}" textWrap="true" class="h1 num"></Label>
+        <Label class="h2 fas p-10 nav-button" text="&#xf0c9;" (tap)="onDrawerButtonTap()"></Label>
+        <StackLayout class="section-1">
+          <Image class="nt-drawer__header-image fas prof-img" src="font://&#xf2bd;"></Image>
+          <Label text="{{ userDetails.displayName }}" textWrap="true" class="m-b-30 h1 prof-name"></Label>
         </StackLayout>
       </GridLayout>
-
-      <FlexboxLayout flexDirection="column">
-        <Button class="btn btn-primary p-r-10 change" (tap)="onChangePass()">
-          <FormattedString>
-            <Span text="&#xf023; " textWrap="true" class="m-t-1 p-15 fas icon"></Span>
-            <Span text="Change Password" textWrap="true" class="change-pass"></Span>
-          </FormattedString>
-        </Button>
-        <Button class="btn btn-primary edit" text="Edit My Profile" (tap)="onEdit()">
-          <FormattedString>
-            <Span text="&#xf304; " textWrap="true" class="m-t-1 p-15 fas icon"></Span>
-            <Span text="Edit My Profile" textWrap="true" class="edit-profile"></Span>
-          </FormattedString>
-        </Button>
-        <Button class="btn btn-primary del m-t-10" text="Delete Account" (tap)="onDel()">
-          <FormattedString>
-            <Span text="&#xf2ed; " textWrap="true" class="m-t-1 p-15 fas icon"></Span>
-
-            <Span text="[WARNING] " style="color: red;" textWrap="true" class="h3 delete-acc"></Span>
-
-            <Span text="Delete Account" textWrap="true" class="delete-acc"></Span>
-          </FormattedString>
-        </Button>
+  
+      <FlexboxLayout flexDirection="column" class="main-content">
+        <GridLayout rows="auto, auto" columns="auto, *, *">
+          <StackLayout class="p-10 m-x-10 m-y-10 task-late" row="0" col="0">
+            <Label text="Late Tasks:" class="h3" textWrap="true"></Label>
+            <Label text="{{myLateTasks.length}}" class="h2" textWrap="true"></Label>
+          </StackLayout>
+          <StackLayout class="p-10 m-x-10 m-y-10 task-pending" row="1" col="0">
+            <Label text="Pending Tasks:" class="h3" textWrap="true"> </Label>
+            <Label text="{{myPendingTasks.length}}" class="h2" textWrap="true"></Label>
+          </StackLayout>
+  
+          <StackLayout class="p-10 m-x-10 m-y-10 info" col="1" colSpan="2">
+            <Label text="My Personal Information" class="h2" textWrap="true"></Label>
+            <Label text="Full Name: {{ userDetails.displayName }}" textWrap="true"></Label>
+            <Label text="Course: {{ userDetails.course }}" textWrap="true"></Label>
+            <Label text="Section: {{ userDetails.section }}" textWrap="true"></Label>
+            <Label text="Email: {{ userDetails.email }}" textWrap="true"></Label>
+            <Label text="Contact Number: {{ userDetails.contactNumber }}" textWrap="true"></Label>
+          </StackLayout>
+  
+          <StackLayout class="p-10 m-x-10 m-y-10 info" col="1" row="1">
+            <Label text="Account &#xa;Type: &#xa;" textWrap="true" class="h3"></Label>
+            <Label text="Student" textWrap="true" class="h1 num"></Label>
+          </StackLayout>
+          <StackLayout class="p-10 m-x-10 m-y-10 info" col="2" row="1">
+            <Label text="Verification &#xa;Status: &#xa;" textWrap="true" class="h3"></Label>
+            <Label text="{{userDetails.verified}}" textWrap="true" class="h1 num"></Label>
+          </StackLayout>
+        </GridLayout>
+  
+        <FlexboxLayout flexDirection="column">
+          <Button class="btn btn-primary p-r-10 change" (tap)="onChangePass()">
+            <FormattedString>
+              <Span text="&#xf023; " textWrap="true" class="m-t-1 p-15 fas icon"></Span>
+              <Span text="Change Password" textWrap="true" class="change-pass"></Span>
+            </FormattedString>
+          </Button>
+          <Button class="btn btn-primary edit" text="Edit My Profile" (tap)="onEdit()">
+            <FormattedString>
+              <Span text="&#xf304; " textWrap="true" class="m-t-1 p-15 fas icon"></Span>
+              <Span text="Edit My Profile" textWrap="true" class="edit-profile"></Span>
+            </FormattedString>
+          </Button>
+          <Button class="btn btn-primary del m-t-10" text="Delete Account" (tap)="onDel()">
+            <FormattedString>
+              <Span text="&#xf2ed; " textWrap="true" class="m-t-1 p-15 fas icon"></Span>
+  
+              <Span text="[WARNING] " style="color: red;" textWrap="true" class="h3 delete-acc"></Span>
+  
+              <Span text="Delete Account" textWrap="true" class="delete-acc"></Span>
+            </FormattedString>
+          </Button>
+        </FlexboxLayout>
       </FlexboxLayout>
-    </FlexboxLayout>
-  </StackLayout>
-</ScrollView>
+    </StackLayout>
+  </ScrollView>
+</StackLayout>

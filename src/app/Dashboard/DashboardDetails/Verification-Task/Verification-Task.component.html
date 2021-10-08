@@ -1,75 +1,78 @@
-<GridLayout rows="*, auto">
-    <ScrollView>
-        <StackLayout *ngIf="verificationTask as task" row="0">
-            <form [formGroup]="submitForm">
-    
-            <GridLayout height="300">
-                <StackLayout class="top">
-                    <Image src="~/app/images/USTbg.png" stretch="aspectFill" class="top-img"> </Image>
-                </StackLayout>
-                <Label class="h2 fas p-10 nav-button" text="&#xf0c9;" (tap)="onDrawerButtonTap()"></Label>
-                <StackLayout class="section-1">
-                    <Label text="{{task.title}}" textWrap="true" class="h1 title"></Label>
-                </StackLayout>
-            </GridLayout>
-    
-            <FlexboxLayout>
-                <StackLayout class="p-10 m-x-10 m-y-10 task-verify">
-                    <Label text="Term: &#xa;" class="m-r-5 h2 task"></Label>
-                    <Label text="{{task.term}}" class="h3 task"></Label>
-                </StackLayout>
-                <StackLayout class="p-10 m-x-10 m-y-10 task-deadline">
-                    <Label text="Created at: &#xa;" class="h2 task"></Label>
-                    <Label text="{{task.createdAt | date}}" class="h3 task"></Label>
-                </StackLayout>
-            </FlexboxLayout>
-    
-            <FlexboxLayout flexDirection="column">
-                <StackLayout class="m-y-10 m-x-10 p-10 task-content">
-                    <Label text="Task Details" textWrap="true" class="h2 title-1"></Label>
-                    <FlexboxLayout>
-                        <Label text=" " textWrap="true" class="rectangle-verify"></Label>
-                        <Label text="{{task.description}}" textWrap="true" class="p-10 task-details"></Label>
-                    </FlexboxLayout>
-                </StackLayout>
-    
-    
-    
-                <!-- <StackLayout class="m-y-10 m-x-10 p-10 task-content">
-                    <Label text="My Attached Files" textWrap="true" class="h2 title-2"></Label>
-                    <FlexboxLayout>
-                        <Label text=" " textWrap="true" class="rectangle-pending" *ngIf="task.status =='Pending'"></Label>
-                        <Label text=" " textWrap="true" class="rectangle-late" *ngIf="task.status =='Late'"></Label>
-                        <Label text=" " textWrap="true" class="rectangle-approval" *ngIf="task.status =='For Approval'"></Label>
-                        <Label text=" " textWrap="true" class="rectangle-accomplished" *ngIf="task.status =='Accomplished'"></Label>
-                        <StackLayout>
-                            <Label text="No submission yet" textWrap="true" class="rectangle-accomplished" *ngIf="task.submissionLink ==''"></Label>
-                            <Label text="{{task.submissionLink}}" textWrap="true" class="rectangle-accomplished" *ngIf="task.submissionLink !=''"></Label>
-                        </StackLayout>
-                    </FlexboxLayout>
-                </StackLayout> -->
-    
-    
-                <StackLayout class="m-y-10 m-x-10 p-10 task-content">
-                    <Label text="Section" textWrap="true" class="h2 title-1"></Label>
-                    <Label text="Enter your section for (term) " textWrap="true" class="p-10 task-details"></Label>
-                    <FlexboxLayout>
-                        <TextField hint="Example: 4ITC" text="" class="p-10" #proposedSection formControlName="proposedSection"></TextField>
-                    </FlexboxLayout>
-                </StackLayout>
-    
-                
-    
-            </FlexboxLayout>
-            </form>
-        </StackLayout>
-    </ScrollView>
-    <FlexboxLayout class="m-t-25 text-submit" *ngIf="submitForm.valid" (tap)="submitTask()" row="1">
-        <Label text="&#xf0c6;" textWrap="true" class="p-10 fas h3 icon"></Label>
-        <Label text="SUBMIT TASK" textWrap="true" class="m-y-10 p-10 h3 text-submit"></Label>
-    </FlexboxLayout>
-    <FlexboxLayout class="m-t-25 text-submit-bawal" *ngIf="submitForm.invalid" (tap)="submitTask()" row="1">
-        <Label text="&#xf0c6;" textWrap="true" class="p-10 fas h3 icon"></Label>
-        <Label text="BAWAL TO" textWrap="true" class="m-y-10 p-10 h3"></Label>
-    </FlexboxLayout>
-</GridLayout>
+<StackLayout>
+    <GridLayout rows="*, auto">
+        <ScrollView>
+            <StackLayout *ngIf="verificationTask as task" row="0">
+                <form [formGroup]="submitForm">
+        
+                <GridLayout height="300">
+                    <StackLayout class="top">
+                        <Image src="~/app/images/USTbg.png" stretch="aspectFill" class="top-img"> </Image>
+                    </StackLayout>
+                    <Label class="h2 fas p-10 nav-button" text="&#xf0c9;" (tap)="onDrawerButtonTap()"></Label>
+                    <StackLayout class="section-1">
+                        <Label text="{{task.title}}" textWrap="true" class="h1 title"></Label>
+                    </StackLayout>
+                </GridLayout>
+        
+                <FlexboxLayout>
+                    <StackLayout class="p-10 m-x-10 m-y-10 task-verify">
+                        <Label text="Term: &#xa;" class="m-r-5 h2 task"></Label>
+                        <Label text="{{task.term}}" class="h3 task"></Label>
+                    </StackLayout>
+                    <StackLayout class="p-10 m-x-10 m-y-10 task-deadline">
+                        <Label text="Created at: &#xa;" class="h2 task"></Label>
+                        <Label text="{{task.createdAt | date}}" class="h3 task"></Label>
+                    </StackLayout>
+                </FlexboxLayout>
+        
+                <FlexboxLayout flexDirection="column">
+                    <StackLayout class="m-y-10 m-x-10 p-10 task-content">
+                        <Label text="Task Details" textWrap="true" class="h2 title-1"></Label>
+                        <FlexboxLayout>
+                            <Label text=" " textWrap="true" class="rectangle-verify"></Label>
+                            <Label text="{{task.description}}" textWrap="true" class="p-10 task-details"></Label>
+                        </FlexboxLayout>
+                    </StackLayout>
+        
+        
+        
+                    <!-- <StackLayout class="m-y-10 m-x-10 p-10 task-content">
+                        <Label text="My Attached Files" textWrap="true" class="h2 title-2"></Label>
+                        <FlexboxLayout>
+                            <Label text=" " textWrap="true" class="rectangle-pending" *ngIf="task.status =='Pending'"></Label>
+                            <Label text=" " textWrap="true" class="rectangle-late" *ngIf="task.status =='Late'"></Label>
+                            <Label text=" " textWrap="true" class="rectangle-approval" *ngIf="task.status =='For Approval'"></Label>
+                            <Label text=" " textWrap="true" class="rectangle-accomplished" *ngIf="task.status =='Accomplished'"></Label>
+                            <StackLayout>
+                                <Label text="No submission yet" textWrap="true" class="rectangle-accomplished" *ngIf="task.submissionLink ==''"></Label>
+                                <Label text="{{task.submissionLink}}" textWrap="true" class="rectangle-accomplished" *ngIf="task.submissionLink !=''"></Label>
+                            </StackLayout>
+                        </FlexboxLayout>
+                    </StackLayout> -->
+        
+        
+                    <StackLayout class="m-y-10 m-x-10 p-10 task-content">
+                        <Label text="Section" textWrap="true" class="h2 title-1"></Label>
+                        <Label text="Enter your section for (term) " textWrap="true" class="p-10 task-details"></Label>
+                        <FlexboxLayout>
+                            <TextField hint="Example: 4ITC" text="" class="p-10" #proposedSection formControlName="proposedSection"></TextField>
+                        </FlexboxLayout>
+                    </StackLayout>
+        
+                    
+        
+                </FlexboxLayout>
+                </form>
+            </StackLayout>
+        </ScrollView>
+        <FlexboxLayout class="m-t-25 text-submit" *ngIf="submitForm.valid" (tap)="submitTask()" row="1">
+            <Label text="&#xf0c6;" textWrap="true" class="p-10 fas h3 icon"></Label>
+            <Label text="SUBMIT TASK" textWrap="true" class="m-y-10 p-10 h3 text-submit"></Label>
+        </FlexboxLayout>
+        <FlexboxLayout class="m-t-25 text-submit-bawal" *ngIf="submitForm.invalid" (tap)="submitTask()" row="1">
+            <Label text="&#xf0c6;" textWrap="true" class="p-10 fas h3 icon"></Label>
+            <Label text="BAWAL TO" textWrap="true" class="m-y-10 p-10 h3"></Label>
+        </FlexboxLayout>
+    </GridLayout>
+</StackLayout>
+
