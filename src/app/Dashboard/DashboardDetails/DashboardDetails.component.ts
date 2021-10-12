@@ -81,6 +81,78 @@ export class DashboardDetailsComponent implements OnInit {
   //   alert("Submit attachment of task");
   // }
 
+  cancelSubmission() {
+    this.zone.run(() => {
+    storage.deleteFile({
+      // optional, can also be passed during init() as 'storageBucket' param so we can cache it
+      // the full path of an existing file in your Firebase storage
+      remoteFullPath: this.taskData.submissionLink
+    }).then(
+        function () {
+          console.log("File deleted.");
+        },
+        function (error) {
+          console.log("File deletion Error: " + error);
+        }
+    ).then(() => {
+      let updatedTaskData = {
+        createdAt: this.taskData.createdAt,
+        deadline: this.taskData.deadline,                      
+        description: this.taskData.description,
+        displayName: this.taskData.displayName,
+        email: this.taskData.email,
+        section: this.taskData.section,
+        pushToken: this.taskData.pushToken,
+        status: 'Pending',
+        submissionLink: '',
+        taskId: this.taskData.taskId,
+        title: this.taskData.title,
+        uid: this.taskData.uid,
+        uploadedBy: this.taskData.uploadedBy,
+        term: this.taskData.term,
+        attemptsLeft: this.taskData.attemptsLeft + 1,
+        deadlineLimit: this.taskData.deadlineLimit
+      }
+  
+      firestore.collection("tasks").doc(this.taskData.taskId)
+      .update({                       
+          recipients: firestore.FieldValue.arrayRemove(this.taskData)
+      }).then(() => {
+      firestore.collection("tasks").doc(this.taskData.taskId)
+        .update({                       
+          recipients: firestore.FieldValue.arrayUnion(updatedTaskData)
+        })
+      })
+    }).then(() => {
+      alert('Your submission was canceled.')
+    })
+    .then(() => {
+
+      const taskDocument = firestore.collection("tasks").doc(this.route.snapshot.paramMap.get('id'));
+      
+      // note that the options object is optional, but you can use it to specify the source of data ("server", "cache", "default").
+      taskDocument.get({ source: "server" }).then(doc => {
+        if (doc.exists) {
+          // this.taskData = doc.data();
+          doc.data().recipients.forEach(element => {
+            if(Object.values(element).includes(this.userData.uid)) { 
+              console.log(element)
+              console.log('it exists')
+              this.taskData = element;
+          }
+          });
+          console.log(`Document data: ${JSON.stringify(doc.data())}`);
+        } else {
+          console.log("No such document!");
+        }
+      });
+    })
+    .catch(() => {
+      alert('There has been an issue with your action.')
+    })
+  })
+  }
+
   submitTask() {
     let extensions = [];
 
