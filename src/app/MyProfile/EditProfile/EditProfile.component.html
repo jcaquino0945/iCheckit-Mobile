@@ -15,10 +15,10 @@
     <TextField hint="{{ userDetails.displayName }}" secure="False" formControlName="displayName"></TextField>
 
 
-    <Label text="This field is required" *ngIf="editForm.controls.contactNumber.errors?.required && editForm.controls.contactNumber.touched" class="validation-error"></Label>
+
 
     <Label text="Contact Number" textWrap="true" class="h2"></Label>
-    <TextField hint="Number" secure="False" formControlName="contactNumber"></TextField>
+    <TextField hint="{{ userDetails.contactNubmer }}" secure="False" formControlName="contactNumber"></TextField>
     <!-- <Button class="btn btn-primary" text="Update Profile" (tap)="onUpdate()" horizontalAlignment="right"></Button> -->
     <FlexboxLayout class="m-x-30 m-y-10">
       <Button class="btn-cancel btn-primary" text="Cancel" (tap)="return()"></Button>

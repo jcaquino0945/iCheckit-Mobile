@@ -25,7 +25,7 @@ export class ForgotPasswordComponent implements OnInit {
   // Validators.pattern('^[a-z0-9._%+-]+@[(ust.edu)]+\\.ph$')
 	ngOnInit() {
     this.loginForm = this.fb.group({
-      _email: ['',[Validators.required, Validators.email, ]]
+      _email: ['',[Validators.required, Validators.email,Validators.pattern('^[a-z0-9._%+-]+@[(ust.edu)]+\\.ph$') ]]
     })
   }
 

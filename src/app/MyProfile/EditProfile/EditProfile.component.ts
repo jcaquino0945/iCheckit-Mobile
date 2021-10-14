@@ -30,7 +30,7 @@ export class EditProfileComponent implements OnInit {
   ngOnInit() {
     this.editForm = this.fb.group({
       displayName: ['',Validators.required],
-      contactNumber: ['',Validators.required]
+      contactNumber: ['']
     });
 
 

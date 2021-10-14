@@ -9,25 +9,24 @@
                 <GridLayout columns="auto, *, auto" rows="auto, auto">
                     <Label text="&#xf053;" class="fas"></Label>
                     <Label text="Back" class="nav-back" (tap)="tapBack()"></Label>
-    
+
                 </GridLayout>
             </StackLayout>
-    
-    
+
+
             <StackLayout>
                 <Label class="header" text="Proceed with your"></Label>
                 <Label class="header-registration" text="Registration"></Label>
-    
+
                 <form [formGroup]="loginForm" class="m-t-10">
                     <FlexboxLayout class="textInput">
                         <StackLayout class="input-field">
-    
+
                             <!-- <Label text="Use your UST account email" *ngIf="loginForm.controls._email.errors?.pattern" class="validation-error"></Label> -->
-    
-                            <Label text="This Field is Required"
-                                *ngIf="loginForm.controls._email.errors?.required && loginForm.controls._email.touched"
-                                class="validation-error"></Label>
-    
+
+                            <Label text="This Field is Required" *ngIf="loginForm.controls._email.errors?.required && loginForm.controls._email.touched" class="validation-error"></Label>
+                            <Label text="Please use your UST account" *ngIf="loginForm.controls._email.errors?.pattern" class="validation-error"></Label>
+
                             <GridLayout columns="*, *" rows="auto, auto" colspan="2">
                                 <Label text="Enter Email:" class="email-text" col="0"></Label>
                                 <Label class="fas" text="&#xf2bd;" colspan="2"></Label>
@@ -35,11 +34,11 @@
                                 </TextField>
                                 <StackLayout class="hr-light"></StackLayout>
                             </GridLayout>
-    
+
                             <Label text="This Field is Required"
                                 *ngIf="loginForm.controls._fullName.errors?.required && loginForm.controls._fullName.touched"
                                 class="validation-error"></Label>
-    
+
                             <GridLayout columns="*, *, auto" rows="auto, 1" colspan="2">
                                 <Label text="Enter Full Name:" class="FullName-text"></Label>
                                 <Label class="fas" text="&#xf2bd;" colspan="2"></Label>
@@ -48,11 +47,11 @@
                                 </TextField>
                                 <StackLayout class="hr-light"></StackLayout>
                             </GridLayout>
-    
+
                             <Label text="This Field is Required"
                                 *ngIf="loginForm.controls._contactNumber.errors?.required && loginForm.controls._contactNumber.touched "
                                 class="validation-error"></Label>
-    
+
                             <GridLayout columns="auto, *, auto" rows="auto, 1" colspan="2">
                                 <Label text="Enter Contact Number:" class="contactNum-text"></Label>
                                 <Label class="fas" text="&#xf2bd;" colspan="2"></Label>
@@ -61,11 +60,11 @@
                                 </TextField>
                                 <StackLayout class="hr-light"></StackLayout>
                             </GridLayout>
-    
+
                             <Label text="This Field is Required"
                                 *ngIf="loginForm.controls._password.errors?.required && loginForm.controls._password.touched"
                                 class="validation-error"></Label>
-    
+
                             <GridLayout columns="auto, *, auto" rows="auto, 1" colspan="2">
                                 <Label text="Password:" class="password-text"></Label>
                                 <TextField #passwordField class="input" hint="Enter your password" secure="true"
@@ -76,8 +75,8 @@
                                     (tap)="toggleShow()"></Label>
                                 <StackLayout class="hr-light"></StackLayout>
                             </GridLayout>
-    
-                            
+
+
                             <!-- <GridLayout columns="auto, *, auto" rows="auto, 1" colspan="2">
                                 <Label text="Confirm Password" class="confirmPass-text"></Label>
                                 <TextField #confirmPasswordField class="input" secure="True" hint="Confirm your Password"
@@ -91,22 +90,22 @@
                             <StackLayout class="form-spacing"></StackLayout>
                         </StackLayout>
                     </FlexboxLayout>
-    
-    
+
+
                     <button text="Sign Up" *ngIf="loginForm.valid" class="btn-registrationButton"
                         (tap)="tapRegister()"></button>
                     <button text="Sign Up" *ngIf="loginForm.invalid" class="btn-registrationButton-disable"
                         (tap)="tapRegister()"></button>
-    
+
                     <StackLayout orientation="horizontal" class="m-y-10 cics">
                         <Image src="~/app/images/logo.png" class="logo-btm"></Image>
                         <Label text="" textWrap="true" class="m-x-10 rectangle"></Label>
                         <Image src="~/app/images/cics.png" class="logo-btm"></Image>
                     </StackLayout>
-    
+
                 </form>
             </StackLayout>
         </FlexboxLayout>
     </StackLayout>
-    
+
 </ScrollView>
