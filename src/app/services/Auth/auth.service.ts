@@ -157,7 +157,9 @@ export class AuthService {
           }
         });
       })
-      .catch(error => console.log(error));
+      .catch(() => {
+        alert('There has been an issue with your login. Your credentials might be invalid or the server is currently down.')
+      });
 
 
         // const cityRef = firestore.collection('users').doc(user.uid);

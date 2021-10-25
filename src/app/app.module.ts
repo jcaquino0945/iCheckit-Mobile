@@ -21,6 +21,7 @@ import { ConfirmNewPasswordComponent } from './confirm-new-password/confirm-new-
 import { NativeScriptFormsModule } from '@nativescript/angular';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { CancelSubmissionComponent } from './Dashboard/DashboardDetails/Cancel-Submission/Cancel-Submission.component';
 
 @NgModule({
   bootstrap: [AppComponent],
@@ -46,7 +47,8 @@ import { HttpClientModule } from '@angular/common/http';
     DashboardDetailsComponent,
     FaqsComponent,
     ContactUsComponent,
-    VerificationTaskComponent
+    VerificationTaskComponent,
+    CancelSubmissionComponent
   ],
   providers: [
     ModalDialogService,

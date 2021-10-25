@@ -25,6 +25,7 @@ a-->
                     <Label text="This Field is Required"
                         *ngIf="loginForm.controls._email.errors?.required && loginForm.controls._email.touched"
                         class="validation-error"></Label>
+                    <Label text="Please use your UST account" class="validation-error" *ngIf="loginForm.controls._email.errors?.pattern"></Label>
 
                     <GridLayout columns="*, *, auto" rows="auto, auto" colspan="2" class="m-y-10">
 
@@ -36,9 +37,11 @@ a-->
 
                     </GridLayout>
 
+
                     <Label text="This field is required"
                         *ngIf="loginForm.controls._password.errors?.required && loginForm.controls._password.touched || loginForm.controls._password.errors?.email"
                         class="validation-error"></Label>
+
 
                     <GridLayout columns="auto, *, auto" colspan="2" rows="auto, 1" class="m-y-10">
 

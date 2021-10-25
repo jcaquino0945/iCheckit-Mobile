@@ -5,6 +5,7 @@ import { DashboardDetailsComponent } from './Dashboard/DashboardDetails/Dashboar
 import { ChangePasswordComponent } from './MyProfile/ChangePassword/ChangePassword.component';
 import { EditProfileComponent } from './MyProfile/EditProfile/EditProfile.component';
 import { DeleteAccountComponent } from './MyProfile/DeleteAccount/DeleteAccount.component';
+import { CancelSubmissionComponent } from './Dashboard/DashboardDetails/Cancel-Submission/Cancel-Submission.component';
 import { NgModule } from '@angular/core'
 import { Routes } from '@angular/router'
 import { NativeScriptRouterModule } from '@nativescript/angular'
@@ -30,6 +31,7 @@ const routes: Routes = [
   { path: 'contact-us', component: ContactUsComponent},
   { path: 'faqs', component: FaqsComponent},
   { path: 'verify', component: VerificationTaskComponent},
+  { path: 'cancel-submission', component: CancelSubmissionComponent}
 ]
 
 @NgModule({

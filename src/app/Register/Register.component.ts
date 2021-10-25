@@ -37,7 +37,7 @@ export class RegisterComponent implements OnInit {
   // Validators.pattern('^[a-z0-9._%+-]+@[(ust.edu)]+\\.ph$')
   ngOnInit() {
     this.loginForm = this.fb.group({
-      _email: ["", [Validators.required, Validators.email]],
+      _email: ["", [Validators.required, Validators.email, Validators.pattern('^[a-z0-9._%+-]+@[(ust.edu)]+\\.ph$')]],
       _fullName: ["", Validators.required],
       _password: ["", Validators.required],
       _confirmPassword: ["", Validators.required],
@@ -46,7 +46,7 @@ export class RegisterComponent implements OnInit {
   }
 
   public tapRegister() {
- 
+
     this.auth.createAccount(
       this.loginForm.controls['_email'].value,
       this.loginForm.controls['_password'].value,
@@ -59,7 +59,7 @@ export class RegisterComponent implements OnInit {
     this.router.navigate(["/login"]);
   }
 
-  
+
   isToggled=false;
   isConfirmToggled=false;
   toggleShow() {

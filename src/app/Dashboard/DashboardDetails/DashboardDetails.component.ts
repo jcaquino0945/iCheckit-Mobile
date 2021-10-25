@@ -1,3 +1,4 @@
+import { CancelSubmissionComponent } from './Cancel-Submission/Cancel-Submission.component';
 import { Application, EventData, View } from "@nativescript/core";
 import { RadSideDrawer } from "nativescript-ui-sidedrawer";
 import { Component, NgZone, OnInit } from "@angular/core";
@@ -7,6 +8,8 @@ import { firebase, firestore ,firebaseFunctions} from "@nativescript/firebase";
 import { storage } from "@nativescript/firebase/storage";
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Http, HttpResponse } from "@nativescript/core";
+import { ViewContainerRef } from "@angular/core";
+import { ModalDialogService } from "@nativescript/angular";
 
 import {
   Mediafilepicker,
@@ -31,6 +34,8 @@ export class DashboardDetailsComponent implements OnInit {
     private zone:NgZone,
     private router: Router,
     private http: HttpClient,
+    private vcRef: ViewContainerRef,
+    private modal: ModalDialogService,
     ) {}
 
   ngOnInit() {
@@ -75,6 +80,17 @@ export class DashboardDetailsComponent implements OnInit {
   onDrawerButtonTap(): void {
     const sideDrawer = <RadSideDrawer>Application.getRootView();
     sideDrawer.showDrawer();
+  }
+
+  onDel() {
+    let options = {
+      context: {},
+      fullscreen: false,
+      viewContainerRef: this.vcRef
+    };
+    this.modal.showModal(CancelSubmissionComponent, options).then(res => {
+      console.log(res);
+    });
   }
 
   // submitTask() {

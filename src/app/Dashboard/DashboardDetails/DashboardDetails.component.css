@@ -20,12 +20,6 @@
   margin-top: 11;
 }
 
-.icon-cancel{
-  margin-top: 9;
-  color: white;
-  background: #35414f;
-  width: 800;
-}
 
 .button-cancel {
   font-family: "Abel-Regular";
@@ -112,6 +106,14 @@
   vertical-align: bottom;
   color: white;
   font-family: "Antonio-Regular";
+}
+
+.icon-cancel{
+  justify-content: center;
+  margin-top: 9;
+  color: white;
+  background: #35414f;
+  font-family: 'Font Awesome 5 Free', 'fa-solid-900', 'Abel-Regular';
 }
 
 .text-submit {

@@ -1,0 +1,19 @@
+<StackLayout class="main-content">
+  <FlexboxLayout>
+    <Label
+      text="&#xf2ed;"
+      textWrap="true"
+      class="fas h3 m-t-10 m-r-10 p-10"
+    ></Label>
+    <Label text="Cancel Submission" textWrap="true" class="m-t-10 h2"></Label>
+  </FlexboxLayout>
+  <Label
+    text="Are you sure you want to cancel your submission?"
+    textWrap="true"
+    class="m-y-10 h3 text-center"
+  ></Label>
+  <FlexboxLayout>
+    <Button text="Cancel" (tap)="goBack()"></Button>
+    <Button class="btn btn-primary" text="Cancel"></Button>
+  </FlexboxLayout>
+</StackLayout>
