@@ -18,6 +18,14 @@
       <StackLayout *tabItem="{ iconSource: 'res://home' }">
         <ScrollView height="1000" *ngIf="myTasks">
           <StackLayout>
+            <StackLayout class="task" *ngIf="myTasks.length == 0">
+              <!-- <FlexboxLayout class="m-b-5 p-10" (tap)="onDetails(task.taskId)" *ngIf="verificationTask as task"> -->
+              <FlexboxLayout class="m-b-5 p-10" *ngIf="verificationTask as task" (tap)="navigate()">
+                <GridLayout columns="*,auto">
+                  <Label text="No Tasks Assigned To You Yet." textWrap="true" class="task-deadline"></Label>
+                </GridLayout>
+              </FlexboxLayout>
+            </StackLayout>
             <StackLayout class="task" *ngIf="userDetails.section == ''">
               <!-- <FlexboxLayout class="m-b-5 p-10" (tap)="onDetails(task.taskId)" *ngIf="verificationTask as task"> -->
               <FlexboxLayout class="m-b-5 p-10" *ngIf="verificationTask as task" (tap)="navigate()">
@@ -79,6 +87,26 @@
       </StackLayout>
 
       <StackLayout *tabItem="{ iconSource: 'res://pending' }">
+        <ScrollView height="1000" *ngIf="!myPendingTasks">
+          <StackLayout class="task">
+            <!-- <FlexboxLayout class="m-b-5 p-10" (tap)="onDetails(task.taskId)" *ngIf="verificationTask as task"> -->
+            <FlexboxLayout class="m-b-5 p-10" *ngIf="verificationTask as task" (tap)="navigate()">
+              <GridLayout columns="*,auto">
+                <Label text="Loading..." textWrap="true" class="task-deadline"></Label>
+              </GridLayout>
+            </FlexboxLayout>
+          </StackLayout>
+        </ScrollView>
+        <ScrollView height="1000" *ngIf="myPendingTasks.length == 0">
+          <StackLayout class="task">
+            <!-- <FlexboxLayout class="m-b-5 p-10" (tap)="onDetails(task.taskId)" *ngIf="verificationTask as task"> -->
+            <FlexboxLayout class="m-b-5 p-10" *ngIf="verificationTask as task" (tap)="navigate()">
+              <GridLayout columns="*,auto">
+                <Label text="No Pending Tasks Assigned To You Yet." textWrap="true" class="task-deadline"></Label>
+              </GridLayout>
+            </FlexboxLayout>
+          </StackLayout>
+        </ScrollView>
         <ScrollView height="1000" *ngIf="myPendingTasks">
           <StackLayout>
             <FlexboxLayout class="m-b-5 p-10 task" (tap)="onDetails(pending.taskId)"
@@ -104,7 +132,35 @@
       </StackLayout>
 
       <StackLayout *tabItem="{ iconSource: 'res://exclamationmark' }">
+        <ScrollView height="1000" *ngIf="!myLateTasks">
+          <StackLayout class="task">
+            <!-- <FlexboxLayout class="m-b-5 p-10" (tap)="onDetails(task.taskId)" *ngIf="verificationTask as task"> -->
+            <FlexboxLayout class="m-b-5 p-10" *ngIf="verificationTask as task" (tap)="navigate()">
+              <GridLayout columns="*,auto">
+                <Label text="Loading..." textWrap="true" class="task-deadline"></Label>
+              </GridLayout>
+            </FlexboxLayout>
+          </StackLayout>
+        </ScrollView>
+        <ScrollView height="1000" *ngIf="myLateTasks.length == 0">
+          <StackLayout class="task">
+            <!-- <FlexboxLayout class="m-b-5 p-10" (tap)="onDetails(task.taskId)" *ngIf="verificationTask as task"> -->
+            <FlexboxLayout class="m-b-5 p-10" *ngIf="verificationTask as task" (tap)="navigate()">
+              <GridLayout columns="*,auto">
+                <Label text="No Late Tasks Assigned To You Yet." textWrap="true" class="task-deadline"></Label>
+              </GridLayout>
+            </FlexboxLayout>
+          </StackLayout>
+        </ScrollView>
         <ScrollView height="1000" *ngIf="myLateTasks">
+          <StackLayout class="task" *ngIf="myLateTasks.length == 0">
+            <!-- <FlexboxLayout class="m-b-5 p-10" (tap)="onDetails(task.taskId)" *ngIf="verificationTask as task"> -->
+            <FlexboxLayout class="m-b-5 p-10" *ngIf="verificationTask as task" (tap)="navigate()">
+              <GridLayout columns="*,auto">
+                <Label text="No Late Tasks Assigned To You Yet." textWrap="true" class="task-deadline"></Label>
+              </GridLayout>
+            </FlexboxLayout>
+          </StackLayout>
           <StackLayout>
             <FlexboxLayout class="m-b-5 p-10 task" (tap)="onDetails(late.taskId)" *ngFor="let late of myLateTasks"> 
               <GridLayout columns="*,*">
@@ -127,7 +183,35 @@
       </StackLayout>
 
       <StackLayout *tabItem="{ iconSource: 'res://glass' }">
+        <ScrollView height="1000" *ngIf="!myForApprovalTasks">
+          <StackLayout class="task">
+            <!-- <FlexboxLayout class="m-b-5 p-10" (tap)="onDetails(task.taskId)" *ngIf="verificationTask as task"> -->
+            <FlexboxLayout class="m-b-5 p-10" *ngIf="verificationTask as task" (tap)="navigate()">
+              <GridLayout columns="*,auto">
+                <Label text="Loading..." textWrap="true" class="task-deadline"></Label>
+              </GridLayout>
+            </FlexboxLayout>
+          </StackLayout>
+        </ScrollView>
+        <ScrollView height="1000" *ngIf="myForApprovalTasks.length == 0">
+          <StackLayout class="task">
+            <!-- <FlexboxLayout class="m-b-5 p-10" (tap)="onDetails(task.taskId)" *ngIf="verificationTask as task"> -->
+            <FlexboxLayout class="m-b-5 p-10" *ngIf="verificationTask as task" (tap)="navigate()">
+              <GridLayout columns="*,auto">
+                <Label text="No For Approval Tasks Assigned To You Yet." textWrap="true" class="task-deadline"></Label>
+              </GridLayout>
+            </FlexboxLayout>
+          </StackLayout>
+        </ScrollView>
         <ScrollView height="1000" *ngIf="myForApprovalTasks">
+          <StackLayout class="task" *ngIf="myForApprovalTasks.length == 0">
+            <!-- <FlexboxLayout class="m-b-5 p-10" (tap)="onDetails(task.taskId)" *ngIf="verificationTask as task"> -->
+            <FlexboxLayout class="m-b-5 p-10" *ngIf="verificationTask as task" (tap)="navigate()">
+              <GridLayout columns="*,auto">
+                <Label text="No For Approval Tasks Assigned To You Yet." textWrap="true" class="task-deadline"></Label>
+              </GridLayout>
+            </FlexboxLayout>
+          </StackLayout>
           <StackLayout>
             <FlexboxLayout class="m-b-5 p-10 task" (tap)="onDetails(forApproval.taskId)" *ngFor="let forApproval of myForApprovalTasks">
               <GridLayout columns="*,*">
@@ -151,7 +235,35 @@
       </StackLayout>
 
       <StackLayout *tabItem="{ iconSource: 'res://check' }">
+        <ScrollView height="1000" *ngIf="!myAccomplishedTasks">
+          <StackLayout class="task">
+            <!-- <FlexboxLayout class="m-b-5 p-10" (tap)="onDetails(task.taskId)" *ngIf="verificationTask as task"> -->
+            <FlexboxLayout class="m-b-5 p-10" *ngIf="verificationTask as task" (tap)="navigate()">
+              <GridLayout columns="*,auto">
+                <Label text="Loading..." textWrap="true" class="task-deadline"></Label>
+              </GridLayout>
+            </FlexboxLayout>
+          </StackLayout>
+        </ScrollView>
+        <ScrollView height="1000" *ngIf="myAccomplishedTasks.length == 0">
+          <StackLayout class="task">
+            <!-- <FlexboxLayout class="m-b-5 p-10" (tap)="onDetails(task.taskId)" *ngIf="verificationTask as task"> -->
+            <FlexboxLayout class="m-b-5 p-10" *ngIf="verificationTask as task" (tap)="navigate()">
+              <GridLayout columns="*,auto">
+                <Label text="No Accomplished Tasks Assigned To You Yet." textWrap="true" class="task-deadline"></Label>
+              </GridLayout>
+            </FlexboxLayout>
+          </StackLayout>
+        </ScrollView>
         <ScrollView height="1000" *ngIf="myAccomplishedTasks">
+          <StackLayout class="task" *ngIf="myAccomplishedTasks.length == 0">
+            <!-- <FlexboxLayout class="m-b-5 p-10" (tap)="onDetails(task.taskId)" *ngIf="verificationTask as task"> -->
+            <FlexboxLayout class="m-b-5 p-10" *ngIf="verificationTask as task" (tap)="navigate()">
+              <GridLayout columns="*,auto">
+                <Label text="No Accomplished Tasks Assigned To You Yet." textWrap="true" class="task-deadline"></Label>
+              </GridLayout>
+            </FlexboxLayout>
+          </StackLayout>
           <StackLayout>
             <FlexboxLayout class="m-b-5 p-10 task" (tap)="onDetails(accomplished.taskId)" *ngFor="let accomplished of myAccomplishedTasks">
               <GridLayout columns="*,*">

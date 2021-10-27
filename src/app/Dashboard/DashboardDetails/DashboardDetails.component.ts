@@ -98,7 +98,7 @@ export class DashboardDetailsComponent implements OnInit {
   // }
 
   cancelSubmission() {
-    this.zone.run(() => {
+    // this.zone.run(() => {
     storage.deleteFile({
       // optional, can also be passed during init() as 'storageBucket' param so we can cache it
       // the full path of an existing file in your Firebase storage
@@ -138,35 +138,36 @@ export class DashboardDetailsComponent implements OnInit {
         .update({                       
           recipients: firestore.FieldValue.arrayUnion(updatedTaskData)
         })
+      })   .then(() => {
+        this.zone.run(() => {
+  
+        const taskDocument = firestore.collection("tasks").doc(this.route.snapshot.paramMap.get('id'));
+        
+        // note that the options object is optional, but you can use it to specify the source of data ("server", "cache", "default").
+        taskDocument.get({ source: "server" }).then(doc => {
+          if (doc.exists) {
+            // this.taskData = doc.data();
+            doc.data().recipients.forEach(element => {
+              if(Object.values(element).includes(this.userData.uid)) { 
+                console.log(element)
+                console.log('it exists')
+                this.taskData = element;
+            }
+            });
+            console.log(`Document data: ${JSON.stringify(doc.data())}`);
+          } else {
+            console.log("No such document!");
+          }
+        });
+      })
       })
     }).then(() => {
       alert('Your submission was canceled.')
     })
-    .then(() => {
-
-      const taskDocument = firestore.collection("tasks").doc(this.route.snapshot.paramMap.get('id'));
-      
-      // note that the options object is optional, but you can use it to specify the source of data ("server", "cache", "default").
-      taskDocument.get({ source: "server" }).then(doc => {
-        if (doc.exists) {
-          // this.taskData = doc.data();
-          doc.data().recipients.forEach(element => {
-            if(Object.values(element).includes(this.userData.uid)) { 
-              console.log(element)
-              console.log('it exists')
-              this.taskData = element;
-          }
-          });
-          console.log(`Document data: ${JSON.stringify(doc.data())}`);
-        } else {
-          console.log("No such document!");
-        }
-      });
-    })
     .catch(() => {
       alert('There has been an issue with your action.')
     })
-  })
+  // })
   }
 
   submitTask() {
