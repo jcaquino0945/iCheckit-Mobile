@@ -93,7 +93,7 @@
                             class="p-10 task-submission" *ngIf="task.submissionLink != ''"></Image>
                     </FlexboxLayout>
                     <Button text="&#xf2ed; Cancel your Submission" class="fas icon-cancel"
-                        *ngIf="task.submissionLink != ''" (tap)="cancelSubmission()"></Button>
+                        *ngIf="task.submissionLink != '' && task.status == 'For Approval'" (tap)="cancelSubmission()"></Button>
                 </StackLayout>
 
                 <!-- <FlexboxLayout class="m-t-25 text-submit" (tap)="submitTask()"

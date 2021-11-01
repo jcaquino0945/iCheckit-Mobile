@@ -256,14 +256,6 @@
           </StackLayout>
         </ScrollView>
         <ScrollView height="1000" *ngIf="myAccomplishedTasks">
-          <StackLayout class="task" *ngIf="myAccomplishedTasks.length == 0">
-            <!-- <FlexboxLayout class="m-b-5 p-10" (tap)="onDetails(task.taskId)" *ngIf="verificationTask as task"> -->
-            <FlexboxLayout class="m-b-5 p-10" *ngIf="verificationTask as task" (tap)="navigate()">
-              <GridLayout columns="*,auto">
-                <Label text="No Accomplished Tasks Assigned To You Yet." textWrap="true" class="task-deadline"></Label>
-              </GridLayout>
-            </FlexboxLayout>
-          </StackLayout>
           <StackLayout>
             <FlexboxLayout class="m-b-5 p-10 task" (tap)="onDetails(accomplished.taskId)" *ngFor="let accomplished of myAccomplishedTasks">
               <GridLayout columns="*,*">
