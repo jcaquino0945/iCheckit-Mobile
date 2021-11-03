@@ -18,6 +18,7 @@ import { firebase, firestore } from "@nativescript/firebase";
 export class MyProfileComponent implements OnInit {
   userData;
   userDetails;
+  section;
   myTasks = [];
   myPendingTasks = [];
   myLateTasks = [];
@@ -33,6 +34,7 @@ export class MyProfileComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.section = '';
     const citiesCollection = firestore.collection("tasks");
 
     citiesCollection.onSnapshot((snapshot: firestore.QuerySnapshot) => {
@@ -49,7 +51,7 @@ export class MyProfileComponent implements OnInit {
                     .then(doc => {
                       if (doc.exists) {
                         this.userDetails = doc.data();
-
+                        this.section = doc.data().section;
                         // this.myAccomplishedTasks = [];
                         // this.myForApprovalTasks = [];
                         // this.myLateTasks = [];

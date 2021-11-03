@@ -16,6 +16,7 @@ export class DashboardComponent implements OnInit {
   constructor(private router: Router, private zone: NgZone) {}
   userData;
   userDetails;
+  section;
   myTasks = [];
   myPendingTasks = [];
   myLateTasks = [];
@@ -23,6 +24,7 @@ export class DashboardComponent implements OnInit {
   myAccomplishedTasks = [];
   verificationTask;
   ngOnInit() {
+    this.section = '';
     this.dashboardTitle = "My Tasks";
     // this.myTasks.splice(0, this.myTasks.length)
     // this.myAccomplishedTasks.splice(0, this.myAccomplishedTasks.length)
@@ -58,6 +60,7 @@ export class DashboardComponent implements OnInit {
                     if (doc.exists) {
                       //bind doc.data() to userDetails to be used in frontend
                       this.userDetails = doc.data();
+                      this.section = doc.data().section;
                       // this.myAccomplishedTasks = [];
                       // this.myForApprovalTasks = [];
                       // this.myLateTasks = [];
