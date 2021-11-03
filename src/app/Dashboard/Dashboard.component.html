@@ -191,14 +191,6 @@
           </StackLayout>
         </ScrollView>
         <ScrollView height="1000" *ngIf="myForApprovalTasks">
-          <StackLayout class="task" *ngIf="myForApprovalTasks.length == 0">
-            <!-- <FlexboxLayout class="m-b-5 p-10" (tap)="onDetails(task.taskId)" *ngIf="verificationTask as task"> -->
-            <FlexboxLayout class="m-b-5 p-10" *ngIf="verificationTask as task" (tap)="navigate()">
-              <GridLayout columns="*,auto">
-                <Label text="No For Approval Tasks Assigned To You Yet." textWrap="true" class="task-deadline"></Label>
-              </GridLayout>
-            </FlexboxLayout>
-          </StackLayout>
           <StackLayout>
             <FlexboxLayout class="m-b-5 p-10 task" (tap)="onDetails(forApproval.taskId)" *ngFor="let forApproval of myForApprovalTasks">
               <GridLayout columns="*,*">
