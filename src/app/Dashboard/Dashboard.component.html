@@ -148,14 +148,6 @@
           </StackLayout>
         </ScrollView>
         <ScrollView height="1000" *ngIf="myLateTasks">
-          <StackLayout class="task" *ngIf="myLateTasks.length == 0">
-            <!-- <FlexboxLayout class="m-b-5 p-10" (tap)="onDetails(task.taskId)" *ngIf="verificationTask as task"> -->
-            <FlexboxLayout class="m-b-5 p-10" *ngIf="verificationTask as task" (tap)="navigate()">
-              <GridLayout columns="*,auto">
-                <Label text="No Late Tasks Assigned To You Yet." textWrap="true" class="task-deadline"></Label>
-              </GridLayout>
-            </FlexboxLayout>
-          </StackLayout>
           <StackLayout>
             <FlexboxLayout class="m-b-5 p-10 task" (tap)="onDetails(late.taskId)" *ngFor="let late of myLateTasks"> 
               <GridLayout columns="*,*">

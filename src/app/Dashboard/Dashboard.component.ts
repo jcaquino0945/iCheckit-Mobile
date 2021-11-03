@@ -78,7 +78,7 @@ export class DashboardComponent implements OnInit {
                         "scope",
                         "array-contains",
                         doc.data().section
-                      );
+                      )
 
                       //prompting the query
                       query.get({ source: "server" }).then(querySnapshot => {
