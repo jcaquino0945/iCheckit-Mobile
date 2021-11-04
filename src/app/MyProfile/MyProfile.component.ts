@@ -36,9 +36,7 @@ export class MyProfileComponent implements OnInit {
   ngOnInit() {
     this.section = '';
     const citiesCollection = firestore.collection("tasks");
-
-    citiesCollection.onSnapshot((snapshot: firestore.QuerySnapshot) => {
-      snapshot.forEach(() => {      
+    
           this.zone.run(() => {
               firebase
               .getCurrentUser()
@@ -116,8 +114,7 @@ export class MyProfileComponent implements OnInit {
               })
               .catch(error => console.log("Trouble in paradise: " + error));
             })
-            });
-          });
+           
 
     const userCollection = firestore.collection("users");
 
@@ -133,6 +130,7 @@ export class MyProfileComponent implements OnInit {
                   .doc(user.uid)
                   .get().then(doc => {
                     if (doc.exists) {
+                      this.section = doc.data().section;
                       console.log(`Document data: ${JSON.stringify(doc.data())}`);
                       this.userDetails = doc.data();
                     } else {

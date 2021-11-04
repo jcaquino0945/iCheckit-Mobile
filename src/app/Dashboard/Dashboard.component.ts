@@ -36,7 +36,7 @@ export class DashboardComponent implements OnInit {
       .collection("verificationTasks")
       .doc("60ThDEIPXLwWD8aHYs8E");
 
-    verifyTask.get({ source: "server" }).then(doc => {
+    verifyTask.get({ source: "default" }).then(doc => {
       if (doc.exists) {
         console.log(`Document data: ${JSON.stringify(doc.data())}`);
         this.verificationTask = doc.data();
@@ -44,9 +44,8 @@ export class DashboardComponent implements OnInit {
         console.log("No such document!");
       }
     });
+    
 
-    citiesCollection.onSnapshot((snapshot: firestore.QuerySnapshot) => {
-      snapshot.forEach(() => {
         this.zone.run(() => {
           firebase
             .getCurrentUser()
@@ -81,7 +80,7 @@ export class DashboardComponent implements OnInit {
                       )
 
                       //prompting the query
-                      query.get({ source: "server" }).then(querySnapshot => {
+                      query.get({ source: "default" }).then(querySnapshot => {
                         this.myTasks = [];
                         this.myAccomplishedTasks = [];
                         this.myForApprovalTasks = [];
@@ -146,8 +145,8 @@ export class DashboardComponent implements OnInit {
             })
             .catch(error => console.log("Trouble in paradise: " + error));
         });
-      });
-    });
+    
+   
     // then after a while, to detach the listener:
     // unsubscribe();
   }
@@ -169,14 +168,509 @@ export class DashboardComponent implements OnInit {
     console.log($event);
     if ($event == 0) {
       this.dashboardTitle = "My Tasks";
+      this.zone.run(() => {
+        firebase
+          .getCurrentUser()
+          .then(user => {
+            (this.userData = user),
+              firestore
+                .collection("users")
+                .doc(this.userData.uid)
+                .get()
+                .then(doc => {
+                  if (doc.exists) {
+                    //bind doc.data() to userDetails to be used in frontend
+                    this.userDetails = doc.data();
+                    this.section = doc.data().section;
+                    // this.myAccomplishedTasks = [];
+                    // this.myForApprovalTasks = [];
+                    // this.myLateTasks = [];
+                    // this.myPendingTasks = [];
+
+                    //display data in console
+                    // console.log(`Document data: ${JSON.stringify(doc.data())}`);
+                    // console.log(doc.data().section);
+
+                    //reference to collection "tasks"
+                    const citiesCollection = firestore.collection("tasks");
+
+                    //query for all tasks documents that contains the user's section
+                    const query = citiesCollection.where(
+                      "scope",
+                      "array-contains",
+                      doc.data().section
+                    )
+
+                    //prompting the query
+                    query.get({ source: "default" }).then(querySnapshot => {
+                      this.myTasks = [];
+                      this.myAccomplishedTasks = [];
+                      this.myForApprovalTasks = [];
+                      this.myLateTasks = [];
+                      this.myPendingTasks = [];
+                      querySnapshot.forEach(doc => {
+                        doc.data().recipients.forEach(element => {
+                          if (
+                            Object.values(element).includes(this.userData.uid)
+                          ) {
+                            // console.log(element)
+                            // console.log('it exists')
+                            this.myTasks.push(element);
+                          }
+                          if (
+                            Object.values(element).includes(
+                              this.userData.uid
+                            ) &&
+                            Object.values(element).includes("Pending")
+                          ) {
+                            // console.log(element)
+                            // console.log('it exists')
+                            this.myPendingTasks.push(element);
+                          }
+                          if (
+                            Object.values(element).includes(
+                              this.userData.uid
+                            ) &&
+                            Object.values(element).includes("Late")
+                          ) {
+                            // console.log(element)
+                            // console.log('it exists')
+                            this.myLateTasks.push(element);
+                          }
+                          if (
+                            Object.values(element).includes(
+                              this.userData.uid
+                            ) &&
+                            Object.values(element).includes("For Approval")
+                          ) {
+                            // console.log(element)
+                            // console.log('it exists')
+                            this.myForApprovalTasks.push(element);
+                          }
+                          if (
+                            Object.values(element).includes(
+                              this.userData.uid
+                            ) &&
+                            Object.values(element).includes("Accomplished")
+                          ) {
+                            // console.log(element)
+                            // console.log('it exists')
+                            this.myAccomplishedTasks.push(element);
+                          }
+                        });
+                      });
+                    });
+                  } else {
+                    console.log("No such document!");
+                  }
+                });
+          })
+          .catch(error => console.log("Trouble in paradise: " + error));
+      });
     } else if ($event == 1) {
       this.dashboardTitle = "My Pending Tasks";
+      this.zone.run(() => {
+        firebase
+          .getCurrentUser()
+          .then(user => {
+            (this.userData = user),
+              firestore
+                .collection("users")
+                .doc(this.userData.uid)
+                .get()
+                .then(doc => {
+                  if (doc.exists) {
+                    //bind doc.data() to userDetails to be used in frontend
+                    this.userDetails = doc.data();
+                    this.section = doc.data().section;
+                    // this.myAccomplishedTasks = [];
+                    // this.myForApprovalTasks = [];
+                    // this.myLateTasks = [];
+                    // this.myPendingTasks = [];
+
+                    //display data in console
+                    // console.log(`Document data: ${JSON.stringify(doc.data())}`);
+                    // console.log(doc.data().section);
+
+                    //reference to collection "tasks"
+                    const citiesCollection = firestore.collection("tasks");
+
+                    //query for all tasks documents that contains the user's section
+                    const query = citiesCollection.where(
+                      "scope",
+                      "array-contains",
+                      doc.data().section
+                    )
+
+                    //prompting the query
+                    query.get({ source: "default" }).then(querySnapshot => {
+                      this.myTasks = [];
+                      this.myAccomplishedTasks = [];
+                      this.myForApprovalTasks = [];
+                      this.myLateTasks = [];
+                      this.myPendingTasks = [];
+                      querySnapshot.forEach(doc => {
+                        doc.data().recipients.forEach(element => {
+                          if (
+                            Object.values(element).includes(this.userData.uid)
+                          ) {
+                            // console.log(element)
+                            // console.log('it exists')
+                            this.myTasks.push(element);
+                          }
+                          if (
+                            Object.values(element).includes(
+                              this.userData.uid
+                            ) &&
+                            Object.values(element).includes("Pending")
+                          ) {
+                            // console.log(element)
+                            // console.log('it exists')
+                            this.myPendingTasks.push(element);
+                          }
+                          if (
+                            Object.values(element).includes(
+                              this.userData.uid
+                            ) &&
+                            Object.values(element).includes("Late")
+                          ) {
+                            // console.log(element)
+                            // console.log('it exists')
+                            this.myLateTasks.push(element);
+                          }
+                          if (
+                            Object.values(element).includes(
+                              this.userData.uid
+                            ) &&
+                            Object.values(element).includes("For Approval")
+                          ) {
+                            // console.log(element)
+                            // console.log('it exists')
+                            this.myForApprovalTasks.push(element);
+                          }
+                          if (
+                            Object.values(element).includes(
+                              this.userData.uid
+                            ) &&
+                            Object.values(element).includes("Accomplished")
+                          ) {
+                            // console.log(element)
+                            // console.log('it exists')
+                            this.myAccomplishedTasks.push(element);
+                          }
+                        });
+                      });
+                    });
+                  } else {
+                    console.log("No such document!");
+                  }
+                });
+          })
+          .catch(error => console.log("Trouble in paradise: " + error));
+      });
     } else if ($event == 2) {
       this.dashboardTitle = "My Late and Closed Tasks";
+      this.zone.run(() => {
+        firebase
+          .getCurrentUser()
+          .then(user => {
+            (this.userData = user),
+              firestore
+                .collection("users")
+                .doc(this.userData.uid)
+                .get()
+                .then(doc => {
+                  if (doc.exists) {
+                    //bind doc.data() to userDetails to be used in frontend
+                    this.userDetails = doc.data();
+                    this.section = doc.data().section;
+                    // this.myAccomplishedTasks = [];
+                    // this.myForApprovalTasks = [];
+                    // this.myLateTasks = [];
+                    // this.myPendingTasks = [];
+
+                    //display data in console
+                    // console.log(`Document data: ${JSON.stringify(doc.data())}`);
+                    // console.log(doc.data().section);
+
+                    //reference to collection "tasks"
+                    const citiesCollection = firestore.collection("tasks");
+
+                    //query for all tasks documents that contains the user's section
+                    const query = citiesCollection.where(
+                      "scope",
+                      "array-contains",
+                      doc.data().section
+                    )
+
+                    //prompting the query
+                    query.get({ source: "default" }).then(querySnapshot => {
+                      this.myTasks = [];
+                      this.myAccomplishedTasks = [];
+                      this.myForApprovalTasks = [];
+                      this.myLateTasks = [];
+                      this.myPendingTasks = [];
+                      querySnapshot.forEach(doc => {
+                        doc.data().recipients.forEach(element => {
+                          if (
+                            Object.values(element).includes(this.userData.uid)
+                          ) {
+                            // console.log(element)
+                            // console.log('it exists')
+                            this.myTasks.push(element);
+                          }
+                          if (
+                            Object.values(element).includes(
+                              this.userData.uid
+                            ) &&
+                            Object.values(element).includes("Pending")
+                          ) {
+                            // console.log(element)
+                            // console.log('it exists')
+                            this.myPendingTasks.push(element);
+                          }
+                          if (
+                            Object.values(element).includes(
+                              this.userData.uid
+                            ) &&
+                            Object.values(element).includes("Late")
+                          ) {
+                            // console.log(element)
+                            // console.log('it exists')
+                            this.myLateTasks.push(element);
+                          }
+                          if (
+                            Object.values(element).includes(
+                              this.userData.uid
+                            ) &&
+                            Object.values(element).includes("For Approval")
+                          ) {
+                            // console.log(element)
+                            // console.log('it exists')
+                            this.myForApprovalTasks.push(element);
+                          }
+                          if (
+                            Object.values(element).includes(
+                              this.userData.uid
+                            ) &&
+                            Object.values(element).includes("Accomplished")
+                          ) {
+                            // console.log(element)
+                            // console.log('it exists')
+                            this.myAccomplishedTasks.push(element);
+                          }
+                        });
+                      });
+                    });
+                  } else {
+                    console.log("No such document!");
+                  }
+                });
+          })
+          .catch(error => console.log("Trouble in paradise: " + error));
+      });
     } else if ($event == 3) {
       this.dashboardTitle = "My For Approval Tasks";
+      this.zone.run(() => {
+        firebase
+          .getCurrentUser()
+          .then(user => {
+            (this.userData = user),
+              firestore
+                .collection("users")
+                .doc(this.userData.uid)
+                .get()
+                .then(doc => {
+                  if (doc.exists) {
+                    //bind doc.data() to userDetails to be used in frontend
+                    this.userDetails = doc.data();
+                    this.section = doc.data().section;
+                    // this.myAccomplishedTasks = [];
+                    // this.myForApprovalTasks = [];
+                    // this.myLateTasks = [];
+                    // this.myPendingTasks = [];
+
+                    //display data in console
+                    // console.log(`Document data: ${JSON.stringify(doc.data())}`);
+                    // console.log(doc.data().section);
+
+                    //reference to collection "tasks"
+                    const citiesCollection = firestore.collection("tasks");
+
+                    //query for all tasks documents that contains the user's section
+                    const query = citiesCollection.where(
+                      "scope",
+                      "array-contains",
+                      doc.data().section
+                    )
+
+                    //prompting the query
+                    query.get({ source: "default" }).then(querySnapshot => {
+                      this.myTasks = [];
+                      this.myAccomplishedTasks = [];
+                      this.myForApprovalTasks = [];
+                      this.myLateTasks = [];
+                      this.myPendingTasks = [];
+                      querySnapshot.forEach(doc => {
+                        doc.data().recipients.forEach(element => {
+                          if (
+                            Object.values(element).includes(this.userData.uid)
+                          ) {
+                            // console.log(element)
+                            // console.log('it exists')
+                            this.myTasks.push(element);
+                          }
+                          if (
+                            Object.values(element).includes(
+                              this.userData.uid
+                            ) &&
+                            Object.values(element).includes("Pending")
+                          ) {
+                            // console.log(element)
+                            // console.log('it exists')
+                            this.myPendingTasks.push(element);
+                          }
+                          if (
+                            Object.values(element).includes(
+                              this.userData.uid
+                            ) &&
+                            Object.values(element).includes("Late")
+                          ) {
+                            // console.log(element)
+                            // console.log('it exists')
+                            this.myLateTasks.push(element);
+                          }
+                          if (
+                            Object.values(element).includes(
+                              this.userData.uid
+                            ) &&
+                            Object.values(element).includes("For Approval")
+                          ) {
+                            // console.log(element)
+                            // console.log('it exists')
+                            this.myForApprovalTasks.push(element);
+                          }
+                          if (
+                            Object.values(element).includes(
+                              this.userData.uid
+                            ) &&
+                            Object.values(element).includes("Accomplished")
+                          ) {
+                            // console.log(element)
+                            // console.log('it exists')
+                            this.myAccomplishedTasks.push(element);
+                          }
+                        });
+                      });
+                    });
+                  } else {
+                    console.log("No such document!");
+                  }
+                });
+          })
+          .catch(error => console.log("Trouble in paradise: " + error));
+      });
     } else if ($event == 4) {
       this.dashboardTitle = "My Accomplished Tasks";
+      this.zone.run(() => {
+        firebase
+          .getCurrentUser()
+          .then(user => {
+            (this.userData = user),
+              firestore
+                .collection("users")
+                .doc(this.userData.uid)
+                .get()
+                .then(doc => {
+                  if (doc.exists) {
+                    //bind doc.data() to userDetails to be used in frontend
+                    this.userDetails = doc.data();
+                    this.section = doc.data().section;
+                    // this.myAccomplishedTasks = [];
+                    // this.myForApprovalTasks = [];
+                    // this.myLateTasks = [];
+                    // this.myPendingTasks = [];
+
+                    //display data in console
+                    // console.log(`Document data: ${JSON.stringify(doc.data())}`);
+                    // console.log(doc.data().section);
+
+                    //reference to collection "tasks"
+                    const citiesCollection = firestore.collection("tasks");
+
+                    //query for all tasks documents that contains the user's section
+                    const query = citiesCollection.where(
+                      "scope",
+                      "array-contains",
+                      doc.data().section
+                    )
+
+                    //prompting the query
+                    query.get({ source: "default" }).then(querySnapshot => {
+                      this.myTasks = [];
+                      this.myAccomplishedTasks = [];
+                      this.myForApprovalTasks = [];
+                      this.myLateTasks = [];
+                      this.myPendingTasks = [];
+                      querySnapshot.forEach(doc => {
+                        doc.data().recipients.forEach(element => {
+                          if (
+                            Object.values(element).includes(this.userData.uid)
+                          ) {
+                            // console.log(element)
+                            // console.log('it exists')
+                            this.myTasks.push(element);
+                          }
+                          if (
+                            Object.values(element).includes(
+                              this.userData.uid
+                            ) &&
+                            Object.values(element).includes("Pending")
+                          ) {
+                            // console.log(element)
+                            // console.log('it exists')
+                            this.myPendingTasks.push(element);
+                          }
+                          if (
+                            Object.values(element).includes(
+                              this.userData.uid
+                            ) &&
+                            Object.values(element).includes("Late")
+                          ) {
+                            // console.log(element)
+                            // console.log('it exists')
+                            this.myLateTasks.push(element);
+                          }
+                          if (
+                            Object.values(element).includes(
+                              this.userData.uid
+                            ) &&
+                            Object.values(element).includes("For Approval")
+                          ) {
+                            // console.log(element)
+                            // console.log('it exists')
+                            this.myForApprovalTasks.push(element);
+                          }
+                          if (
+                            Object.values(element).includes(
+                              this.userData.uid
+                            ) &&
+                            Object.values(element).includes("Accomplished")
+                          ) {
+                            // console.log(element)
+                            // console.log('it exists')
+                            this.myAccomplishedTasks.push(element);
+                          }
+                        });
+                      });
+                    });
+                  } else {
+                    console.log("No such document!");
+                  }
+                });
+          })
+          .catch(error => console.log("Trouble in paradise: " + error));
+      });
     }
   }
 }

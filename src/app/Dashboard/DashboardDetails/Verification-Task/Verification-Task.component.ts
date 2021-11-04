@@ -53,7 +53,7 @@ export class VerificationTaskComponent implements OnInit {
 		.collection("verificationTasks")
 		.doc("60ThDEIPXLwWD8aHYs8E");
   
-	  verifyTask.get({ source: "server" }).then(doc => {
+	  verifyTask.get({ source: "default" }).then(doc => {
 		if (doc.exists) {
 		  console.log(`Document data: ${JSON.stringify(doc.data())}`);
 		  this.verificationTask = doc.data();

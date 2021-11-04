@@ -18,7 +18,7 @@ export class TaskService {
     const tasksCollection = firestore.collection("tasks").where('scope','array-contains',section)
 
 // note that the options object is optional, but you can use it to specify the source of data ("server", "cache", "default").
-        return tasksCollection.get({ source: "server" }).then(querySnapshot => {
+        return tasksCollection.get({ source: "default" }).then(querySnapshot => {
         querySnapshot.forEach(doc => {
             console.log(`${doc.id} => ${JSON.stringify(doc.data())}`);
         });

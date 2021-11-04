@@ -53,7 +53,7 @@ export class DashboardDetailsComponent implements OnInit {
               const taskDocument = firestore.collection("tasks").doc(this.route.snapshot.paramMap.get('id'));
 
               // note that the options object is optional, but you can use it to specify the source of data ("server", "cache", "default").
-              taskDocument.get({ source: "server" }).then(doc => {
+              taskDocument.get({ source: "default" }).then(doc => {
                 if (doc.exists) {
                   // this.taskData = doc.data();
                   doc.data().recipients.forEach(element => {
@@ -144,7 +144,7 @@ export class DashboardDetailsComponent implements OnInit {
         const taskDocument = firestore.collection("tasks").doc(this.route.snapshot.paramMap.get('id'));
         
         // note that the options object is optional, but you can use it to specify the source of data ("server", "cache", "default").
-        taskDocument.get({ source: "server" }).then(doc => {
+        taskDocument.get({ source: "default" }).then(doc => {
           if (doc.exists) {
             // this.taskData = doc.data();
             doc.data().recipients.forEach(element => {
@@ -281,7 +281,7 @@ export class DashboardDetailsComponent implements OnInit {
                           const taskDocument = firestore.collection("tasks").doc(this.route.snapshot.paramMap.get('id'));
                           
                           // note that the options object is optional, but you can use it to specify the source of data ("server", "cache", "default").
-                          taskDocument.get({ source: "server" }).then(doc => {
+                          taskDocument.get({ source: "default" }).then(doc => {
                             if (doc.exists) {
                               // this.taskData = doc.data();
                               doc.data().recipients.forEach(element => {
