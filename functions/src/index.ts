@@ -8,15 +8,13 @@ const nodemailer = require('nodemailer');
 // 2. https://accounts.google.com/DisplayUnlockCaptcha
 // For other types of transports such as Sendgrid see https://nodemailer.com/transports/
 // TODO: Configure the `gmail.email` and `gmail.password` Google Cloud environment variables.
-const gmailEmail = functions.config().gmail.email;
-const gmailPassword = functions.config().gmail.password;
 const mailTransport = nodemailer.createTransport({
   host: 'smtp.gmail.com',
   port: 465,
   secure: true, 
   auth: {
-    user: gmailEmail,
-    pass: gmailPassword,
+    user: 'jcaquino0945@gmail.com',
+    pass: 'qvmizeuqdwnoqisa',
   },
 });
 const APP_NAME = 'iCheckit';
@@ -36,7 +34,6 @@ const settings = {timeStampInSnapshots: true};
 db.settings(settings);
 
 exports.adminCreateStudent = functions.https.onRequest((request, response) => {
-  response.set('Access-Control-Allow-Origin', '*');
   cors(request, response, () => {
     if (request.method !== "POST") {
       response.status(405).send("Method Not Allowed");
@@ -71,7 +68,7 @@ exports.adminCreateStudent = functions.https.onRequest((request, response) => {
                 <p style="margin-top: 2rem;"> iCheckit </p>
             </div>
             <div style="padding: 1rem; font-size: 100%;">
-                <p> Hello, (student name)</p>
+                <p> Hello, ${displayName}</p>
                 <p> Welcome to ${APP_NAME}. This application is a task list and notification system for the students of the
                     College of Information and Computing Sciences that will help remind the students on accomplishing
                     non-curricular tasks such as Satisfaction Surveys and Faculty Evaluation that we usually forget to do
@@ -88,7 +85,11 @@ exports.adminCreateStudent = functions.https.onRequest((request, response) => {
         </div>`,
             };
             functions.logger.log('New welcome email sent to:', email);
-            return mailTransport.sendMail(mailOptions);
+            mailTransport.sendMail(mailOptions);
+            return response.status(200).send({
+              message: 'successfully created user',
+              userRecord
+            });
             
           })
           .catch((error) => {
@@ -154,22 +155,23 @@ const recipients = data.recipients;
 const description = data.description;
 
 // Determine the message
-const payload = {
-  notification: {
-    title: taskTitle,
-    body: 'A new task has been uploaded. Click on this notification to open the application.',
-    sound: 'default',
-    badge: '1'
-  }
-}
-console.log(payload);
+
 pushTokens.forEach((element: any) => {
   if (element.pushToken == '') {
       console.log('no push token')
   }   
   else if (element.pushToken != '') {
-      console.log('sent to :', element.pushToken);
-      admin.messaging().sendToDevice(element.pushToken, payload);
+    const payload = {
+      notification: {
+        title: taskTitle,
+        body: 'A new task has been uploaded. Click on this notification to open the application.',
+        sound: 'default',
+        badge: '1'
+      }
+    }
+    console.log(payload);
+    console.log('sent to :', element.pushToken);
+    return admin.messaging().sendToDevice(element.pushToken, payload)
   }
 });
 recipients.forEach((element: any) => {
@@ -200,7 +202,6 @@ recipients.forEach((element: any) => {
               <p style="margin-top: 2rem;"> iCheckit </p>
           </div>
           <div style="padding: 1rem; font-size: 100%;">
-              <p> Greetings, (student name)!</p>
               <p> A new task has been assigned to you for your compliance. Click the button to open the task in your
                   mobile application to see the task instructions.
               </p>
@@ -212,9 +213,6 @@ recipients.forEach((element: any) => {
               <span style="padding-left: 2rem;">Task Description: ${description}</span> <br>
               <span style="padding-left: 2rem;">Task Deadline: ${deadline}</span> <br>
               <span style="padding-left: 2rem;">Uploaded By: ${uploadedBy} </span><br>
-          </div>
-          <div style="padding: 1rem;">
-              <button style="background-color: red; width: auto; height: auto; color: white;"> Open iCheckit </button>
           </div>
       </div>
   `
@@ -237,13 +235,12 @@ recipients.forEach((element: any) => {
 });
 
 exports.sendEmail = functions.https.onRequest((request, response) => {
-  response.set('Access-Control-Allow-Origin', '*');
   cors(request, response, () => {
     if (request.method !== "POST") {
       response.status(405).send("Method Not Allowed");
     }
     else {
-      if (request.body.pushToken != '') {
+      if (request.body.pushToken != "") {
         console.log('may push token');
         const body = request.body;
         const email = body.email;
@@ -304,13 +301,25 @@ exports.sendEmail = functions.https.onRequest((request, response) => {
       `
         };
         functions.logger.log('updated task status email sent to:', email);
-        
-        admin.messaging().sendToDevice(request.body.pushToken, payload);
 
-        return mailTransport.sendMail(mailOptions)
+        // return admin.messaging().sendToDevice(element.pushToken, payload)
+
+        return admin.messaging().sendToDevice(request.body.pushToken, payload).then((res) => {
+          console.log(res)
+          mailTransport.sendMail(mailOptions)
+          return response.status(200).send({
+            message: 'sent email to' + email,
+          })
+        }).catch((err) => {
+          return response.status(400).send("Failed to create user: " + err);
+        })
+
+
+       
+
        
       }
-      if (request.body.pushToken == '') {
+      if (request.body.pushToken == "") {
         console.log('no push token');
         const body = request.body;
         const email = body.email;
@@ -365,9 +374,155 @@ exports.sendEmail = functions.https.onRequest((request, response) => {
       </body>`
         };
         functions.logger.log('updated task status email sent to:', email);
-        return mailTransport.sendMail(mailOptions);
-       
+         mailTransport.sendMail(mailOptions)
+        
+        return response.status(200).send({
+          message: 'sent email to' + email,
+        })      
       }
     }
   });
 });
+
+exports.emailForApproval = functions.firestore
+    .document('tasks/{id}/recipients/{userId}')
+    .onUpdate((change, context) => {
+      // Get an object representing the document
+      // e.g. {'name': 'Marie', 'age': 66}
+      const newValue = change.after.data();
+
+      // ...or the previous value before this update
+      const previousValue = change.before.data();
+
+      // access a particular field as you would any JS property
+      const status = newValue.status;
+
+      console.log(newValue)
+      console.log(previousValue)
+      console.log(status)
+
+      // perform desired operations ...
+    }); 
+
+    exports.sendWelcomeEmail = functions.auth.user().onCreate((user) => {
+      console.log(user)
+    });
+
+    // exports.updateEmail = functions.https.onRequest((request, response) => {
+    //   cors(request, response, () => {
+    //     if (request.method !== "POST") {
+    //       response.status(405).send("Method Not Allowed");
+    //     } else {
+    //       const body = request.body;
+    //       const recipients = body.recipients;
+    //       /*
+    //         const section = body.section;
+    //         const course = body.course;
+    //         const contactNumber = body.contactNumber;
+    //         */
+        
+    //         recipients.forEach(element => {
+    //         const mailOptions = {
+    //           from: `${APP_NAME} <noreply@firebase.com>`,
+    //           to: element.email,
+    //           subject: `${APP_NAME} has been updated!`,
+    //           // html: `Hey ${displayName}! Welcome to ${APP_NAME}. I hope you will enjoy our service. We aim to provide a platform for students in terms of submission and keeping track of non academic college-wide tasks. Visit our mobile application to view all the tasks uploaded in our system.`
+    //           html: `<div style="margin: auto; background-color: white; height: auto;justify-content: center;">
+    //         <div style="padding: 1rem;">
+    //             <!-- <img src="/logo.png" style="max-height: 80px; max-width: 80px; margin-top: 2rem;" />
+    //             <img src="/cics.png" style="max-height: 80px; max-width: 100px; margin-top: 2rem;" /> -->
+    //             <p style="margin-top: 2rem;"> iCheckit </p>
+    //         </div>
+    //         <div style="padding: 1rem; font-size: 100%;">
+    //             <p> Hello, ${APP_NAME}</p>
+    //             <p> Welcome to ${APP_NAME}. This application is a task list and notification system for the students of the
+    //                 College of Information and Computing Sciences that will help remind the students on accomplishing
+    //                 non-curricular tasks such as Satisfaction Surveys and Faculty Evaluation that we usually forget to do
+    //                 because of our academic load. You must download the application to your device to receive push
+    //                 notification about new tasks or updated tasks assigned to you and you will also be able to submit your
+    //                 proof of completion on these tasks once you downloaded the application. </p>
+    //             <p> We hope that in creating this app to notify every one of us on the non-curricular tasks, we will have an
+    //                 organized system of task completion and verification under our College.
+    //             </p>
+    //             <p> That would be all for now! Enjoy exploring iCheckIt! </p>
+    //             <p style="margin-top: 5rem;"> Kind regards, </ps>
+    //             <p> iCheckIt team </p>
+    //         </div>
+    //     </div>`,
+    //         };
+    //         functions.logger.log('New welcome email sent to:', email);
+    //         mailTransport.sendMail(mailOptions);
+    //         return response.status(200).send({
+    //           message: 'successfully created user',
+    //           userRecord
+    //         });
+    //       });
+    //     }
+    //   }
+    //   );
+    // });
+    exports.taskUpdatedEmail = functions.https.onRequest((request, response) => {
+      cors(request, response, () => {
+        if (request.method !== "POST") {
+          response.status(405).send("Method Not Allowed");
+        } else {
+          const body = request.body;
+          const recipients = body.recipients;
+          const title = body.title;
+          const description = body.description;
+          const deadline = body.deadline
+
+          /*
+            const section = body.section;
+            const course = body.course;
+            const contactNumber = body.contactNumber;
+            */
+            recipients.forEach((element: any) => {
+              const mailOptions = {
+                from: `${APP_NAME} <noreply@firebase.com>`,
+                to: element.email,
+                subject: `${title} has been updated!`,
+                // html: `Hey ${displayName}! Welcome to ${APP_NAME}. I hope you will enjoy our service. We aim to provide a platform for students in terms of submission and keeping track of non academic college-wide tasks. Visit our mobile application to view all the tasks uploaded in our system.`
+                html: `
+                <div style="margin: auto; background-color: white; height: auto; justify-content: center;">
+          <div style="padding: 1rem;">
+              <!-- <img src="/logo.png" style="max-height: 80px; max-width: 80px; margin-top: 2rem;" />
+              <img src="/cics.png" style="max-height: 80px; max-width: 100px; margin-top: 2rem;" /> -->
+              <p style="margin-top: 2rem;"> iCheckit </p>
+          </div>
+          <div style="padding: 1rem; font-size: 100%;">
+              <p> The task ${title} has been updated. Please visit the mobile application to view the updates to the task
+              </p>
+          </div>
+          <hr style="background-color: black; width: 90%;">
+          <div style="padding: 1rem; font-size: 100%;">
+              <p><b>Task Details</b></p>
+              <span style="padding-left: 2rem;">Task title: ${title}</span> <br>
+              <span style="padding-left: 2rem;">Task Description: ${description}</span> <br>
+              <span style="padding-left: 2rem;">Task Deadline: ${deadline}</span> <br>
+          </div>
+      </div>
+                `,
+              };
+              const payload = {
+                notification: {
+                  title: `${title} has updates!`,
+                  body: `There has been updates to the task ${title}. Click here to open the application.`,
+                  badge: '1'
+                }
+              }
+               return admin.messaging().sendToDevice(element.pushToken, payload).then((res) => {
+                console.log(res)
+                functions.logger.log('updated task email sent to:', element.email)
+                  mailTransport.sendMail(mailOptions)
+                  return response.status(200).send({
+                    message: 'email sent to' + element.email
+                  });
+              }).catch((err) => {
+                return response.status(400).send("Failed to create user: " + err);
+              })
+           })         
+        }
+      }
+      );
+    }); 

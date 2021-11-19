@@ -35,15 +35,13 @@
                 <Label class="p-t-10 fas h4 icon" text="&#xf068;" col="2" colSpan="3" *ngIf="isToggled[1]"></Label>
             </GridLayout>
             <StackLayout *ngIf="isToggled[1]">
-                <Label text="The participants of the task will receive the following eamils, which are all case-by-case basis: " textWrap="true" class="h3 ans"></Label>
+                <Label text="The participants of the task will receive the following emails, which are all case-by-case basis: " textWrap="true" class="h3 ans"></Label>
                 <Label text="• The welcome email, introducing the mobile application to the student from the iCheckit team. " textWrap="true" class="h3 ans-1"></Label>
-                <Label text="• Email regarding the successful submission made by the student for a specific task." textWrap="true" class="h3 ans-1"></Label>
                 <Label text="• Email regarding the successful second submission made by the student for a specific task. This will only be received by the student if the submitted file was a wrong one." textWrap="true" class="h3 ans-1"></Label>
                 <Label text="• If the proof of completion has been accepted by the web administrator, an email will be sent to the student stating that the submission has been accepted and the task has been accomplished, and vice versa." textWrap="true" class="h3 ans-1"></Label>
                 <Label text="• There will also be an email notification if the web administrator has added a new task and the student is under its scope." textWrap="true" class="h3 ans-1"></Label>
                 <Label text="• If there are any updates to the task, the students will also be notified through email notification." textWrap="true" class="h3 ans-1"></Label>
-                <Label text="• Regarding the task itself, the students will be receiving emails if the task deadline is due tomorrow, today, or yesterday." textWrap="true" class="h3 ans-1"></Label>
-                <Label text="• The students will also be notified if the submission for the task has been closed by the web administrator." textWrap="true" class="h3 ans-1"></Label>
+                <!-- <Label text="• The students will also be notified if the submission for the task has been closed by the web administrator." textWrap="true" class="h3 ans-1"></Label> -->
             </StackLayout>
             <StackLayout class="hr m-10"> </StackLayout>
 
@@ -135,6 +133,25 @@
 
 
         </FlexboxLayout>
+
+        <StackLayout>
+            <Label text="For Android Issues" textWrap="true" class="h2 que m-t-25"></Label>
+        </StackLayout>
+        <StackLayout class="hr m-10"> </StackLayout>
+        <GridLayout columns="*, 200" (tap)="onTap(7)">
+            <Label text="How to grant permission for iCheckit to manage all your files (Android 11 or higher)" textWrap="true" class="h3 que" col="0"></Label>
+            <Label class="p-t-10 fas h4 icon" text="&#xf067;" col="2" colSpan="3" *ngIf="!isToggled[7]"></Label>
+            <Label class="p-t-10 fas h4 icon" text="&#xf068;" col="2" colSpan="3" *ngIf="isToggled[7]"></Label>
+        </GridLayout>
+        <StackLayout *ngIf="isToggled[7]">
+            <Label text="• In the Settings, tap 'Apps'. " class="h3 ans-1"></Label>
+            <Label text="• Search for the application, 'iCheckit'. " class="h3 ans-1"></Label>
+            <Label text="• Under the 'Privacy' section, tap on 'Permissions'. " class="h3 ans-1"></Label>
+            <Label text="• Under the 'Allowed' part, tap 'Storage'. " class="h3 ans-1"></Label>
+            <Label text="• From the choices displayed, choose 'Allow Management of all files'. " class="h3 ans-1"></Label>
+            <Label text="• Restart app and pass the needed proof of completion'. " class="h3 ans-1"></Label>
+        </StackLayout>
+
 
     </StackLayout>
 </ScrollView>

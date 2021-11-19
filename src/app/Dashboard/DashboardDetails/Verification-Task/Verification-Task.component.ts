@@ -104,7 +104,7 @@ export class VerificationTaskComponent implements OnInit {
 					// this.myFile = this.myFile.split(/(\\|\/)/g).pop()
 					console.log(this.myFile);
 		
-					const path = `60ThDEIPXLwWD8aHYs8E/${this.myFile.split(/(\\|\/)/g).pop()}/`;
+					const path = `verificationTask/${this.myFile.split(/(\\|\/)/g).pop()}/`;
 					console.log(path);
 					var metadata = ({});
 					

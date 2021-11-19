@@ -50,10 +50,12 @@
                     <StackLayout class="p-l-15 task-details-accomplished" *ngIf="task.status == 'Accomplished'">
                       <Label text="{{ task.title }}" textWrap="true"></Label>
                       <Label text="Deadline: {{ task.deadline | date }}" textWrap="true" class="task-deadline"></Label>
+                      <Label text="Submitted At: {{ task.submittedAt | date }}" textWrap="true" class="task-deadline"></Label>
                     </StackLayout>
                     <StackLayout class="p-l-15 task-details-approval" *ngIf="task.status == 'For Approval'">
                       <Label text="{{ task.title }}" textWrap="true"></Label>
                       <Label text="Deadline: {{ task.deadline | date }}" textWrap="true" class="task-deadline"></Label>
+                      <Label text="Submitted At: {{ task.submittedAt | date }}" textWrap="true" class="task-deadline"></Label>
                     </StackLayout>
                     <StackLayout class="p-l-15 task-details-pending" *ngIf="task.status == 'Pending'">
                       <Label text="{{ task.title }}" textWrap="true"></Label>
@@ -204,6 +206,7 @@
                   <StackLayout class="p-l-15 task-details-approval">
                     <Label text="{{ forApproval.title }}" textWrap="true"></Label>
                     <Label text="Deadline: {{ forApproval.deadline | date }}" textWrap="true" class="task-deadline"></Label>
+                    <Label text="Deadline: {{ forApproval.submittedAt | date }}" textWrap="true" class="task-deadline"></Label>
                   </StackLayout>
                 </FlexboxLayout>
                 <Label text="&#xf254;" textWrap="true" class="fas h2 icon-approval " col="2" colSpan="2"></Label>
@@ -248,6 +251,7 @@
                   <StackLayout class="p-l-15 task-details-accomplished">
                     <Label text="{{ accomplished.title }}" textWrap="true"></Label>
                     <Label text="Deadline: {{ accomplished.deadline | date }}" textWrap="true" class="task-deadline"></Label>
+                    <Label text="Deadline: {{ accomplished.submittedAt | date }}" textWrap="true" class="task-deadline"></Label>
                   </StackLayout>
                 </FlexboxLayout>
                 <Label text="&#xf00c;" textWrap="true" class="fas h2 icon-ok " col="2" colSpan="2"></Label>
