@@ -151,7 +151,7 @@
         </ScrollView>
         <ScrollView height="1000" *ngIf="myLateTasks">
           <StackLayout>
-            <FlexboxLayout class="m-b-5 p-10 task" (tap)="onDetails(late.taskId)" *ngFor="let late of myLateTasks"> 
+            <FlexboxLayout class="m-b-5 p-10 task" (tap)="onDetails(late.taskId)" *ngFor="let late of myLateTasks">
               <GridLayout columns="*,*">
                 <FlexboxLayout col="0">
                   <!-- <Label text=" " textWrap="true" class="rectangle-late"></Label>
@@ -251,7 +251,7 @@
                   <StackLayout class="p-l-15 task-details-accomplished">
                     <Label text="{{ accomplished.title }}" textWrap="true"></Label>
                     <Label text="Deadline: {{ accomplished.deadline | date }}" textWrap="true" class="task-deadline"></Label>
-                    <Label text="Deadline: {{ accomplished.submittedAt | date }}" textWrap="true" class="task-deadline"></Label>
+                    <Label text="Submitted At: {{ accomplished.submittedAt | date }}" textWrap="true" class="task-deadline"></Label>
                   </StackLayout>
                 </FlexboxLayout>
                 <Label text="&#xf00c;" textWrap="true" class="fas h2 icon-ok " col="2" colSpan="2"></Label>
