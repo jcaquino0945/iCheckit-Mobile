@@ -59,10 +59,12 @@
                     </StackLayout>
                     <StackLayout class="p-l-15 task-details-pending" *ngIf="task.status == 'Pending'">
                       <Label text="{{ task.title }}" textWrap="true"></Label>
+                      <Label text="Date Created: {{ task.createdAt | date }}" textWrap="true" class="task-deadline"></Label>
                       <Label text="Deadline: {{ task.deadline | date }}" textWrap="true" class="task-deadline"></Label>
                     </StackLayout>
                     <StackLayout class="p-l-15 task-details-late" *ngIf="task.status == 'Late'">
                       <Label text="{{ task.title }}" textWrap="true"></Label>
+                      <Label text="Date Created: {{ task.createdAt | date }}" textWrap="true" class="task-deadline"></Label>
                       <Label text="Deadline: {{ task.deadline | date }}" textWrap="true" class="task-deadline"></Label>
                     </StackLayout>
                   </FlexboxLayout>
@@ -118,6 +120,7 @@
                   </StackLayout> -->
                   <StackLayout class="p-l-15 task-details-pending">
                     <Label text="{{ pending.title }}" textWrap="true"></Label>
+                    <Label text="Date Created: {{ pending.createdAt | date }}" textWrap="true" class="task-deadline"></Label>
                     <Label text="Deadline: {{ pending.deadline | date }}" textWrap="true" class="task-deadline"></Label>
                   </StackLayout>
                 </FlexboxLayout>
@@ -161,6 +164,7 @@
                   </StackLayout> -->
                   <StackLayout class="p-l-15 task-details-late">
                     <Label text="{{ late.title }}" textWrap="true"></Label>
+                    <Label text="Date Created: {{ late.createdAt | date }}" textWrap="true" class="task-deadline"></Label>
                     <Label text="Deadline: {{ late.deadline | date }}" textWrap="true" class="task-deadline"></Label>
                   </StackLayout>
                 </FlexboxLayout>
@@ -206,7 +210,7 @@
                   <StackLayout class="p-l-15 task-details-approval">
                     <Label text="{{ forApproval.title }}" textWrap="true"></Label>
                     <Label text="Deadline: {{ forApproval.deadline | date }}" textWrap="true" class="task-deadline"></Label>
-                    <Label text="Deadline: {{ forApproval.submittedAt | date }}" textWrap="true" class="task-deadline"></Label>
+                    <Label text="Submitted At: {{ forApproval.submittedAt | date }}" textWrap="true" class="task-deadline"></Label>
                   </StackLayout>
                 </FlexboxLayout>
                 <Label text="&#xf254;" textWrap="true" class="fas h2 icon-approval " col="2" colSpan="2"></Label>
