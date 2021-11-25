@@ -60,9 +60,10 @@
                     <StackLayout class="p-l-15 task-details-pending" *ngIf="task.status == 'Pending'">
                       <Label text="{{ task.title }}" textWrap="true"></Label>
                       <Label text="Date Created: {{ task.createdAt | date }}" textWrap="true" class="task-deadline"></Label>
+                      <Label text="Date Starts At: {{ task.startsAt | date }}" textWrap="true" class="task-deadline"></Label>
                       <Label text="Deadline: {{ task.deadline | date }}" textWrap="true" class="task-deadline"></Label>
                     </StackLayout>
-                    <StackLayout class="p-l-15 task-details-late" *ngIf="task.status == 'Late'">
+                    <StackLayout class="p-l-15 task-details-late" *ngIf="task.status == 'No Submission'">
                       <Label text="{{ task.title }}" textWrap="true"></Label>
                       <Label text="Date Created: {{ task.createdAt | date }}" textWrap="true" class="task-deadline"></Label>
                       <Label text="Deadline: {{ task.deadline | date }}" textWrap="true" class="task-deadline"></Label>
@@ -70,7 +71,7 @@
                   </FlexboxLayout>
                   <StackLayout col="2" colSpan="2">
                     <Label text="&#xf12a;" textWrap="true" class="fas h2 icon-late"
-                      *ngIf="task.status == 'Late'"></Label>
+                      *ngIf="task.status == 'No Submission'"></Label>
                     <Label text="&#xf017;" textWrap="true" class="fas h2 icon-pending"
                       *ngIf="task.status == 'Pending'"></Label>
                     <Label text="&#xf254;" textWrap="true" class="fas h2 icon-approval"
@@ -147,7 +148,7 @@
             <!-- <FlexboxLayout class="m-b-5 p-10" (tap)="onDetails(task.taskId)" *ngIf="verificationTask as task"> -->
             <FlexboxLayout class="m-b-5 p-10" *ngIf="verificationTask as task" (tap)="navigate()">
               <GridLayout columns="*,auto">
-                <Label text="No Late Tasks Assigned To You Yet." textWrap="true" class="task-deadline"></Label>
+                <Label text="No Non-Complied Tasks Assigned To You Yet." textWrap="true" class="task-deadline"></Label>
               </GridLayout>
             </FlexboxLayout>
           </StackLayout>

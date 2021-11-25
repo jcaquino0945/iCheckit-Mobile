@@ -88,18 +88,18 @@ export class DashboardComponent implements OnInit {
                         this.myPendingTasks = [];
                         querySnapshot.forEach(doc => {
                           doc.data().recipients.forEach(element => {
-                            if (
-                              Object.values(element).includes(this.userData.uid)
+                            if ((
+                              Object.values(element).includes(this.userData.uid)) && (+ new Date().getDate() >= new Date(element.startsAt).getDate())
                             ) {
                               // console.log(element)
-                              // console.log('it exists')
+                              console.log('it exists')
                               this.myTasks.push(element);
                             }
                             if (
-                              Object.values(element).includes(
+                              (Object.values(element).includes(
                                 this.userData.uid
                               ) &&
-                              Object.values(element).includes("Pending")
+                              Object.values(element).includes("Pending")) && ((+ new Date().getDate() >= new Date(element.startsAt).getDate()))
                             ) {
                               // console.log(element)
                               // console.log('it exists')
@@ -109,7 +109,7 @@ export class DashboardComponent implements OnInit {
                               Object.values(element).includes(
                                 this.userData.uid
                               ) &&
-                              Object.values(element).includes("Late")
+                              Object.values(element).includes("No Submission")
                             ) {
                               // console.log(element)
                               // console.log('it exists')
@@ -210,18 +210,18 @@ export class DashboardComponent implements OnInit {
                       this.myPendingTasks = [];
                       querySnapshot.forEach(doc => {
                         doc.data().recipients.forEach(element => {
-                          if (
-                            Object.values(element).includes(this.userData.uid)
+                          if ((
+                            Object.values(element).includes(this.userData.uid)) && (+ new Date().getDate() >= new Date(element.startsAt).getDate())
                           ) {
                             // console.log(element)
-                            // console.log('it exists')
+                            console.log('it exists')
                             this.myTasks.push(element);
                           }
                           if (
-                            Object.values(element).includes(
+                            (Object.values(element).includes(
                               this.userData.uid
                             ) &&
-                            Object.values(element).includes("Pending")
+                            Object.values(element).includes("Pending")) && ((+ new Date().getDate() >= new Date(element.startsAt).getDate()))
                           ) {
                             // console.log(element)
                             // console.log('it exists')
@@ -231,7 +231,7 @@ export class DashboardComponent implements OnInit {
                             Object.values(element).includes(
                               this.userData.uid
                             ) &&
-                            Object.values(element).includes("Late")
+                            Object.values(element).includes("No Submission")
                           ) {
                             // console.log(element)
                             // console.log('it exists')
@@ -311,18 +311,18 @@ export class DashboardComponent implements OnInit {
                       this.myPendingTasks = [];
                       querySnapshot.forEach(doc => {
                         doc.data().recipients.forEach(element => {
-                          if (
-                            Object.values(element).includes(this.userData.uid)
+                          if ((
+                            Object.values(element).includes(this.userData.uid)) && (+ new Date().getDate() >= new Date(element.startsAt).getDate())
                           ) {
                             // console.log(element)
-                            // console.log('it exists')
+                            console.log('it exists')
                             this.myTasks.push(element);
                           }
                           if (
-                            Object.values(element).includes(
+                            (Object.values(element).includes(
                               this.userData.uid
                             ) &&
-                            Object.values(element).includes("Pending")
+                            Object.values(element).includes("Pending")) && ((+ new Date().getDate() >= new Date(element.startsAt).getDate()))
                           ) {
                             // console.log(element)
                             // console.log('it exists')
@@ -332,7 +332,7 @@ export class DashboardComponent implements OnInit {
                             Object.values(element).includes(
                               this.userData.uid
                             ) &&
-                            Object.values(element).includes("Late")
+                            Object.values(element).includes("No Submission")
                           ) {
                             // console.log(element)
                             // console.log('it exists')
@@ -369,7 +369,7 @@ export class DashboardComponent implements OnInit {
           .catch(error => console.log("Trouble in paradise: " + error));
       });
     } else if ($event == 2) {
-      this.dashboardTitle = "My Late and Closed Tasks";
+      this.dashboardTitle = "My Non-Complied Tasks";
       this.zone.run(() => {
         firebase
           .getCurrentUser()
@@ -412,18 +412,18 @@ export class DashboardComponent implements OnInit {
                       this.myPendingTasks = [];
                       querySnapshot.forEach(doc => {
                         doc.data().recipients.forEach(element => {
-                          if (
-                            Object.values(element).includes(this.userData.uid)
+                          if ((
+                            Object.values(element).includes(this.userData.uid)) && (+ new Date().getDate() >= new Date(element.startsAt).getDate())
                           ) {
                             // console.log(element)
-                            // console.log('it exists')
+                            console.log('it exists')
                             this.myTasks.push(element);
                           }
                           if (
-                            Object.values(element).includes(
+                            (Object.values(element).includes(
                               this.userData.uid
                             ) &&
-                            Object.values(element).includes("Pending")
+                            Object.values(element).includes("Pending")) && ((+ new Date().getDate() >= new Date(element.startsAt).getDate()))
                           ) {
                             // console.log(element)
                             // console.log('it exists')
@@ -433,7 +433,7 @@ export class DashboardComponent implements OnInit {
                             Object.values(element).includes(
                               this.userData.uid
                             ) &&
-                            Object.values(element).includes("Late")
+                            Object.values(element).includes("No Submission")
                           ) {
                             // console.log(element)
                             // console.log('it exists')
@@ -513,18 +513,18 @@ export class DashboardComponent implements OnInit {
                       this.myPendingTasks = [];
                       querySnapshot.forEach(doc => {
                         doc.data().recipients.forEach(element => {
-                          if (
-                            Object.values(element).includes(this.userData.uid)
+                          if ((
+                            Object.values(element).includes(this.userData.uid)) && (+ new Date().getDate() >= new Date(element.startsAt).getDate())
                           ) {
                             // console.log(element)
-                            // console.log('it exists')
+                            console.log('it exists')
                             this.myTasks.push(element);
                           }
                           if (
-                            Object.values(element).includes(
+                            (Object.values(element).includes(
                               this.userData.uid
                             ) &&
-                            Object.values(element).includes("Pending")
+                            Object.values(element).includes("Pending")) && ((+ new Date().getDate() >= new Date(element.startsAt).getDate()))
                           ) {
                             // console.log(element)
                             // console.log('it exists')
@@ -534,7 +534,7 @@ export class DashboardComponent implements OnInit {
                             Object.values(element).includes(
                               this.userData.uid
                             ) &&
-                            Object.values(element).includes("Late")
+                            Object.values(element).includes("No Submission")
                           ) {
                             // console.log(element)
                             // console.log('it exists')
@@ -614,18 +614,18 @@ export class DashboardComponent implements OnInit {
                       this.myPendingTasks = [];
                       querySnapshot.forEach(doc => {
                         doc.data().recipients.forEach(element => {
-                          if (
-                            Object.values(element).includes(this.userData.uid)
+                          if ((
+                            Object.values(element).includes(this.userData.uid)) && (+ new Date().getDate() >= new Date(element.startsAt).getDate())
                           ) {
                             // console.log(element)
-                            // console.log('it exists')
+                            console.log('it exists')
                             this.myTasks.push(element);
                           }
                           if (
-                            Object.values(element).includes(
+                            (Object.values(element).includes(
                               this.userData.uid
                             ) &&
-                            Object.values(element).includes("Pending")
+                            Object.values(element).includes("Pending")) && ((+ new Date().getDate() >= new Date(element.startsAt).getDate()))
                           ) {
                             // console.log(element)
                             // console.log('it exists')
@@ -635,7 +635,7 @@ export class DashboardComponent implements OnInit {
                             Object.values(element).includes(
                               this.userData.uid
                             ) &&
-                            Object.values(element).includes("Late")
+                            Object.values(element).includes("No Submission")
                           ) {
                             // console.log(element)
                             // console.log('it exists')
