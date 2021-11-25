@@ -40,36 +40,9 @@
             </StackLayout>
             <StackLayout class="task">
               <FlexboxLayout class="m-b-5 p-10" (tap)="onDetails(task.taskId)" *ngFor="let task of myTasks">
-                <GridLayout columns="*,auto">
-                  <FlexboxLayout col="0">
-                    <!-- <Label text="" textWrap="true" class="rectangle-late" *ngIf="task.status == 'Late'"></Label>
-                    <Label text="" textWrap="true" class="rectangle-pending" *ngIf="task.status == 'Pending'"></Label>
-                    <Label text="" textWrap="true" class="rectangle-approval"
-                      *ngIf="task.status == 'For Approval'"></Label>
-                    <Label text="" textWrap="true" class="rectangle-ok" *ngIf="task.status == 'Accomplished'"></Label> -->
-                    <StackLayout class="p-l-15 task-details-accomplished" *ngIf="task.status == 'Accomplished'">
-                      <Label text="{{ task.title }}" textWrap="true"></Label>
-                      <Label text="Deadline: {{ task.deadline | date }}" textWrap="true" class="task-deadline"></Label>
-                      <Label text="Submitted At: {{ task.submittedAt | date }}" textWrap="true" class="task-deadline"></Label>
-                    </StackLayout>
-                    <StackLayout class="p-l-15 task-details-approval" *ngIf="task.status == 'For Approval'">
-                      <Label text="{{ task.title }}" textWrap="true"></Label>
-                      <Label text="Deadline: {{ task.deadline | date }}" textWrap="true" class="task-deadline"></Label>
-                      <Label text="Submitted At: {{ task.submittedAt | date }}" textWrap="true" class="task-deadline"></Label>
-                    </StackLayout>
-                    <StackLayout class="p-l-15 task-details-pending" *ngIf="task.status == 'Pending'">
-                      <Label text="{{ task.title }}" textWrap="true"></Label>
-                      <Label text="Date Created: {{ task.createdAt | date }}" textWrap="true" class="task-deadline"></Label>
-                      <Label text="Deadline: {{ task.deadline | date }}" textWrap="true" class="task-deadline"></Label>
-                    </StackLayout>
-                    <StackLayout class="p-l-15 task-details-late" *ngIf="task.status == 'Late'">
-                      <Label text="{{ task.title }}" textWrap="true"></Label>
-                      <Label text="Date Created: {{ task.createdAt | date }}" textWrap="true" class="task-deadline"></Label>
-                      <Label text="Deadline: {{ task.deadline | date }}" textWrap="true" class="task-deadline"></Label>
-                    </StackLayout>
-                  </FlexboxLayout>
-                  <StackLayout col="2" colSpan="2">
-                    <Label text="&#xf12a;" textWrap="true" class="fas h2 icon-late"
+                <GridLayout columns="*,10*">
+                  <StackLayout col="0">
+                    <Label text="&#xf00d;" textWrap="true" class="fas h2 icon-late"
                       *ngIf="task.status == 'Late'"></Label>
                     <Label text="&#xf017;" textWrap="true" class="fas h2 icon-pending"
                       *ngIf="task.status == 'Pending'"></Label>
@@ -78,6 +51,43 @@
                     <Label text="&#xf00c;" textWrap="true" class="fas h2 icon-ok"
                       *ngIf="task.status == 'Accomplished'"></Label>
                   </StackLayout>
+                  <FlexboxLayout col="1">
+                    <!-- <Label text="" textWrap="true" class="rectangle-late" *ngIf="task.status == 'Late'"></Label>
+                    <Label text="" textWrap="true" class="rectangle-pending" *ngIf="task.status == 'Pending'"></Label>
+                    <Label text="" textWrap="true" class="rectangle-approval"
+                      *ngIf="task.status == 'For Approval'"></Label>
+                    <Label text="" textWrap="true" class="rectangle-ok" *ngIf="task.status == 'Accomplished'"></Label> -->
+                    <StackLayout class="task-details-accomplished" *ngIf="task.status == 'Accomplished'">
+                      <Label text="{{ task.title }}" textWrap="true"></Label>
+                      <Label text="Deadline: {{ task.deadline | date }}" textWrap="true" class="task-deadline"></Label>
+                      <Label text="Submitted At: {{ task.submittedAt | date }}" textWrap="true" class="task-deadline"></Label>
+                    </StackLayout>
+                    <StackLayout class="task-details-approval" *ngIf="task.status == 'For Approval'">
+                      <Label text="{{ task.title }}" textWrap="true"></Label>
+                      <Label text="Deadline: {{ task.deadline | date }}" textWrap="true" class="task-deadline"></Label>
+                      <Label text="Submitted At: {{ task.submittedAt | date }}" textWrap="true" class="task-deadline"></Label>
+                    </StackLayout>
+                    <StackLayout class="task-details-pending" *ngIf="task.status == 'Pending'">
+                      <Label text="{{ task.title }}" textWrap="true"></Label>
+                      <Label text="Date Created: {{ task.createdAt | date }}" textWrap="true" class="task-deadline"></Label>
+                      <Label text="Deadline: {{ task.deadline | date }}" textWrap="true" class="task-deadline"></Label>
+                    </StackLayout>
+                    <StackLayout class="task-details-late" *ngIf="task.status == 'Late'">
+                      <Label text="{{ task.title }}" textWrap="true"></Label>
+                      <Label text="Date Created: {{ task.createdAt | date }}" textWrap="true" class="task-deadline"></Label>
+                      <Label text="Deadline: {{ task.deadline | date }}" textWrap="true" class="task-deadline"></Label>
+                    </StackLayout>
+                  </FlexboxLayout>
+                  <!-- <StackLayout col="2" colSpan="2">
+                    <Label text="&#xf12a;" textWrap="true" class="fas h2 icon-late"
+                      *ngIf="task.status == 'Late'"></Label>
+                    <Label text="&#xf017;" textWrap="true" class="fas h2 icon-pending"
+                      *ngIf="task.status == 'Pending'"></Label>
+                    <Label text="&#xf254;" textWrap="true" class="fas h2 icon-approval"
+                      *ngIf="task.status == 'For Approval'"></Label>
+                    <Label text="&#xf00c;" textWrap="true" class="fas h2 icon-ok"
+                      *ngIf="task.status == 'Accomplished'"></Label>
+                  </StackLayout> -->
                 </GridLayout>
               </FlexboxLayout>
             </StackLayout>
@@ -110,65 +120,23 @@
           <StackLayout>
             <FlexboxLayout class="m-b-5 p-10 task" (tap)="onDetails(pending.taskId)"
               *ngFor="let pending of myPendingTasks">
-              <GridLayout columns="*,auto">
-                <FlexboxLayout col="0">
+              <GridLayout columns="*,10*">
+                <StackLayout col="0">
+                  <Label text="&#xf017;" textWrap="true" class="fas h2 icon-pending " ></Label>
+                </StackLayout>
+                <FlexboxLayout col="1">
                   <!-- <Label text=" " textWrap="true" class="rectangle-pending"></Label>
                   <StackLayout>
                     <Label text="{{ pending.title }}" textWrap="true" class="task-details"></Label>
                     <Label text="Deadline: {{ pending.deadline | date }} " textWrap="true"
                       class="task-deadline"></Label>
                   </StackLayout> -->
-                  <StackLayout class="p-l-15 task-details-pending">
+                  <StackLayout class="task-details-pending">
                     <Label text="{{ pending.title }}" textWrap="true"></Label>
                     <Label text="Date Created: {{ pending.createdAt | date }}" textWrap="true" class="task-deadline"></Label>
                     <Label text="Deadline: {{ pending.deadline | date }}" textWrap="true" class="task-deadline"></Label>
                   </StackLayout>
                 </FlexboxLayout>
-                <Label text="&#xf017;" textWrap="true" class="fas h2 icon-pending " col="2" colSpan="2"></Label>
-              </GridLayout>
-            </FlexboxLayout>
-          </StackLayout>
-        </ScrollView>
-      </StackLayout>
-
-      <StackLayout *tabItem="{ iconSource: 'res://exclamationmark' }">
-        <ScrollView height="1000" *ngIf="!myLateTasks">
-          <StackLayout class="task">
-            <!-- <FlexboxLayout class="m-b-5 p-10" (tap)="onDetails(task.taskId)" *ngIf="verificationTask as task"> -->
-            <FlexboxLayout class="m-b-5 p-10" *ngIf="verificationTask as task" (tap)="navigate()">
-              <GridLayout columns="*,auto">
-                <Label text="Loading..." textWrap="true" class="task-deadline"></Label>
-              </GridLayout>
-            </FlexboxLayout>
-          </StackLayout>
-        </ScrollView>
-        <ScrollView height="1000" *ngIf="myLateTasks.length == 0">
-          <StackLayout class="task">
-            <!-- <FlexboxLayout class="m-b-5 p-10" (tap)="onDetails(task.taskId)" *ngIf="verificationTask as task"> -->
-            <FlexboxLayout class="m-b-5 p-10" *ngIf="verificationTask as task" (tap)="navigate()">
-              <GridLayout columns="*,auto">
-                <Label text="No Late Tasks Assigned To You Yet." textWrap="true" class="task-deadline"></Label>
-              </GridLayout>
-            </FlexboxLayout>
-          </StackLayout>
-        </ScrollView>
-        <ScrollView height="1000" *ngIf="myLateTasks">
-          <StackLayout>
-            <FlexboxLayout class="m-b-5 p-10 task" (tap)="onDetails(late.taskId)" *ngFor="let late of myLateTasks">
-              <GridLayout columns="*,*">
-                <FlexboxLayout col="0">
-                  <!-- <Label text=" " textWrap="true" class="rectangle-late"></Label>
-                  <StackLayout>
-                    <Label text="{{ late.title }}" textWrap="true" class="task-details"></Label>
-                    <Label text="Deadline: {{ late.deadline | date }} " textWrap="true" class="task-deadline"></Label>
-                  </StackLayout> -->
-                  <StackLayout class="p-l-15 task-details-late">
-                    <Label text="{{ late.title }}" textWrap="true"></Label>
-                    <Label text="Date Created: {{ late.createdAt | date }}" textWrap="true" class="task-deadline"></Label>
-                    <Label text="Deadline: {{ late.deadline | date }}" textWrap="true" class="task-deadline"></Label>
-                  </StackLayout>
-                </FlexboxLayout>
-                <Label text="&#xf12a;" textWrap="true" class="fas h2 icon-late " col="2" colSpan="2"></Label>
               </GridLayout>
             </FlexboxLayout>
           </StackLayout>
@@ -199,21 +167,23 @@
         <ScrollView height="1000" *ngIf="myForApprovalTasks">
           <StackLayout>
             <FlexboxLayout class="m-b-5 p-10 task" (tap)="onDetails(forApproval.taskId)" *ngFor="let forApproval of myForApprovalTasks">
-              <GridLayout columns="*,*">
-                <FlexboxLayout col="0">
+              <GridLayout columns="*,10*">
+                <StackLayout col="0">
+                  <Label text="&#xf254;" textWrap="true" class="fas h2 icon-approval " ></Label>
+                </StackLayout>
+                <FlexboxLayout col="1">
                   <!-- <Label text=" " textWrap="true" class="rectangle-approval"></Label>
                   <StackLayout>
                     <Label text="{{ forApproval.title }}" textWrap="true" class="task-details"></Label>
                     <Label text="Deadline: {{ forApproval.deadline | date }} " textWrap="true"
                       class="task-deadline"></Label>
                   </StackLayout> -->
-                  <StackLayout class="p-l-15 task-details-approval">
+                  <StackLayout class="task-details-approval">
                     <Label text="{{ forApproval.title }}" textWrap="true"></Label>
                     <Label text="Deadline: {{ forApproval.deadline | date }}" textWrap="true" class="task-deadline"></Label>
                     <Label text="Submitted At: {{ forApproval.submittedAt | date }}" textWrap="true" class="task-deadline"></Label>
                   </StackLayout>
                 </FlexboxLayout>
-                <Label text="&#xf254;" textWrap="true" class="fas h2 icon-approval " col="2" colSpan="2"></Label>
               </GridLayout>
             </FlexboxLayout>
           </StackLayout>
@@ -244,21 +214,69 @@
         <ScrollView height="1000" *ngIf="myAccomplishedTasks">
           <StackLayout>
             <FlexboxLayout class="m-b-5 p-10 task" (tap)="onDetails(accomplished.taskId)" *ngFor="let accomplished of myAccomplishedTasks">
-              <GridLayout columns="*,*">
-                <FlexboxLayout col="0">
+              <GridLayout columns="*,10*">
+                <StackLayout col="0">
+                  <Label text="&#xf00c;" textWrap="true" class="fas h2 icon-ok " ></Label>
+                </StackLayout>
+                <FlexboxLayout col="1">
                   <!-- <Label text=" " textWrap="true" class="rectangle-ok"></Label>
                   <StackLayout>
                     <Label text="{{ accomplished.title }}" textWrap="true" class="task-details"></Label>
                     <Label text="Deadline: {{ accomplished.deadline | date }} " textWrap="true"
                       class="task-deadline"></Label>
                   </StackLayout> -->
-                  <StackLayout class="p-l-15 task-details-accomplished">
+                  <StackLayout class="task-details-accomplished">
                     <Label text="{{ accomplished.title }}" textWrap="true"></Label>
                     <Label text="Deadline: {{ accomplished.deadline | date }}" textWrap="true" class="task-deadline"></Label>
                     <Label text="Submitted At: {{ accomplished.submittedAt | date }}" textWrap="true" class="task-deadline"></Label>
                   </StackLayout>
                 </FlexboxLayout>
-                <Label text="&#xf00c;" textWrap="true" class="fas h2 icon-ok " col="2" colSpan="2"></Label>
+              </GridLayout>
+            </FlexboxLayout>
+          </StackLayout>
+        </ScrollView>
+      </StackLayout>
+
+      <StackLayout *tabItem="{ iconSource: 'res://cross1' }">
+        <ScrollView height="1000" *ngIf="!myLateTasks">
+          <StackLayout class="task">
+            <!-- <FlexboxLayout class="m-b-5 p-10" (tap)="onDetails(task.taskId)" *ngIf="verificationTask as task"> -->
+            <FlexboxLayout class="m-b-5 p-10" *ngIf="verificationTask as task" (tap)="navigate()">
+              <GridLayout columns="*,auto">
+                <Label text="Loading..." textWrap="true" class="task-deadline"></Label>
+              </GridLayout>
+            </FlexboxLayout>
+          </StackLayout>
+        </ScrollView>
+        <ScrollView height="1000" *ngIf="myLateTasks.length == 0">
+          <StackLayout class="task">
+            <!-- <FlexboxLayout class="m-b-5 p-10" (tap)="onDetails(task.taskId)" *ngIf="verificationTask as task"> -->
+            <FlexboxLayout class="m-b-5 p-10" *ngIf="verificationTask as task" (tap)="navigate()">
+              <GridLayout columns="*,auto">
+                <Label text="No Late Tasks Assigned To You Yet." textWrap="true" class="task-deadline"></Label>
+              </GridLayout>
+            </FlexboxLayout>
+          </StackLayout>
+        </ScrollView>
+        <ScrollView height="1000" *ngIf="myLateTasks">
+          <StackLayout>
+            <FlexboxLayout class="m-b-5 p-10 task" (tap)="onDetails(late.taskId)" *ngFor="let late of myLateTasks">
+              <GridLayout columns="*,10*">
+                <StackLayout col="0">
+                  <Label text="&#xf00d;" textWrap="true" class="fas h2 icon-late " ></Label>
+                </StackLayout>
+                <FlexboxLayout col="1">
+                  <!-- <Label text=" " textWrap="true" class="rectangle-late"></Label>
+                  <StackLayout>
+                    <Label text="{{ late.title }}" textWrap="true" class="task-details"></Label>
+                    <Label text="Deadline: {{ late.deadline | date }} " textWrap="true" class="task-deadline"></Label>
+                  </StackLayout> -->
+                  <StackLayout class="task-details-late">
+                    <Label text="{{ late.title }}" textWrap="true"></Label>
+                    <Label text="Date Created: {{ late.createdAt | date }}" textWrap="true" class="task-deadline"></Label>
+                    <Label text="Deadline: {{ late.deadline | date }}" textWrap="true" class="task-deadline"></Label>
+                  </StackLayout>
+                </FlexboxLayout>
               </GridLayout>
             </FlexboxLayout>
           </StackLayout>
