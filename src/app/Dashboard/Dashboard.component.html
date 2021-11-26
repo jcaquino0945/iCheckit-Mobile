@@ -49,24 +49,23 @@
                     <Label text="" textWrap="true" class="rectangle-ok" *ngIf="task.status == 'Accomplished'"></Label> -->
                     <StackLayout class="p-l-15 task-details-accomplished" *ngIf="task.status == 'Accomplished'">
                       <Label text="{{ task.title }}" textWrap="true"></Label>
-                      <Label text="Deadline: {{ task.deadline | date }}" textWrap="true" class="task-deadline"></Label>
+                      <Label text="Task Duration: {{ task.startsAt| date }} - {{task.deadline | date}}" textWrap="true" class="task-deadline"></Label>
                       <Label text="Submitted At: {{ task.submittedAt | date }}" textWrap="true" class="task-deadline"></Label>
                     </StackLayout>
                     <StackLayout class="p-l-15 task-details-approval" *ngIf="task.status == 'For Approval'">
                       <Label text="{{ task.title }}" textWrap="true"></Label>
-                      <Label text="Deadline: {{ task.deadline | date }}" textWrap="true" class="task-deadline"></Label>
+                      <Label text="Task Duration: {{ task.startsAt| date }} - {{task.deadline | date}}" textWrap="true" class="task-deadline"></Label>
                       <Label text="Submitted At: {{ task.submittedAt | date }}" textWrap="true" class="task-deadline"></Label>
                     </StackLayout>
                     <StackLayout class="p-l-15 task-details-pending" *ngIf="task.status == 'Pending'">
                       <Label text="{{ task.title }}" textWrap="true"></Label>
                       <Label text="Date Created: {{ task.createdAt | date }}" textWrap="true" class="task-deadline"></Label>
-                      <Label text="Date Starts At: {{ task.startsAt | date }}" textWrap="true" class="task-deadline"></Label>
-                      <Label text="Deadline: {{ task.deadline | date }}" textWrap="true" class="task-deadline"></Label>
+                      <Label text="Task Duration: {{ task.startsAt| date }} - {{task.deadline | date}}" textWrap="true" class="task-deadline"></Label>
                     </StackLayout>
                     <StackLayout class="p-l-15 task-details-late" *ngIf="task.status == 'No Submission'">
                       <Label text="{{ task.title }}" textWrap="true"></Label>
                       <Label text="Date Created: {{ task.createdAt | date }}" textWrap="true" class="task-deadline"></Label>
-                      <Label text="Deadline: {{ task.deadline | date }}" textWrap="true" class="task-deadline"></Label>
+                      <Label text="Task Duration: {{ task.startsAt| date }} - {{task.deadline | date}}" textWrap="true" class="task-deadline"></Label>
                     </StackLayout>
                   </FlexboxLayout>
                   <StackLayout col="2" colSpan="2">

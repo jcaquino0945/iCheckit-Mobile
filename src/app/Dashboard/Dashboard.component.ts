@@ -106,30 +106,30 @@ export class DashboardComponent implements OnInit {
                               this.myPendingTasks.push(element);
                             }
                             if (
-                              Object.values(element).includes(
+                              (Object.values(element).includes(
                                 this.userData.uid
                               ) &&
-                              Object.values(element).includes("No Submission")
+                              Object.values(element).includes("No Submission")) && ((+ new Date().getDate() >= new Date(element.startsAt).getDate()))
                             ) {
                               // console.log(element)
                               // console.log('it exists')
                               this.myLateTasks.push(element);
                             }
                             if (
-                              Object.values(element).includes(
+                              (Object.values(element).includes(
                                 this.userData.uid
                               ) &&
-                              Object.values(element).includes("For Approval")
+                              Object.values(element).includes("For Approval")) && ((+ new Date().getDate() >= new Date(element.startsAt).getDate()))
                             ) {
                               // console.log(element)
                               // console.log('it exists')
                               this.myForApprovalTasks.push(element);
                             }
                             if (
-                              Object.values(element).includes(
+                              (Object.values(element).includes(
                                 this.userData.uid
                               ) &&
-                              Object.values(element).includes("Accomplished")
+                              Object.values(element).includes("Accomplished")) && ((+ new Date().getDate() >= new Date(element.startsAt).getDate()))
                             ) {
                               // console.log(element)
                               // console.log('it exists')
@@ -228,30 +228,30 @@ export class DashboardComponent implements OnInit {
                             this.myPendingTasks.push(element);
                           }
                           if (
-                            Object.values(element).includes(
+                            (Object.values(element).includes(
                               this.userData.uid
                             ) &&
-                            Object.values(element).includes("No Submission")
+                            Object.values(element).includes("No Submission")) && ((+ new Date().getDate() >= new Date(element.startsAt).getDate()))
                           ) {
                             // console.log(element)
                             // console.log('it exists')
                             this.myLateTasks.push(element);
                           }
                           if (
-                            Object.values(element).includes(
+                            (Object.values(element).includes(
                               this.userData.uid
                             ) &&
-                            Object.values(element).includes("For Approval")
+                            Object.values(element).includes("For Approval")) && ((+ new Date().getDate() >= new Date(element.startsAt).getDate()))
                           ) {
                             // console.log(element)
                             // console.log('it exists')
                             this.myForApprovalTasks.push(element);
                           }
                           if (
-                            Object.values(element).includes(
+                            (Object.values(element).includes(
                               this.userData.uid
                             ) &&
-                            Object.values(element).includes("Accomplished")
+                            Object.values(element).includes("Accomplished")) && ((+ new Date().getDate() >= new Date(element.startsAt).getDate()))
                           ) {
                             // console.log(element)
                             // console.log('it exists')
@@ -329,30 +329,30 @@ export class DashboardComponent implements OnInit {
                             this.myPendingTasks.push(element);
                           }
                           if (
-                            Object.values(element).includes(
+                            (Object.values(element).includes(
                               this.userData.uid
                             ) &&
-                            Object.values(element).includes("No Submission")
+                            Object.values(element).includes("No Submission")) && ((+ new Date().getDate() >= new Date(element.startsAt).getDate()))
                           ) {
                             // console.log(element)
                             // console.log('it exists')
                             this.myLateTasks.push(element);
                           }
                           if (
-                            Object.values(element).includes(
+                            (Object.values(element).includes(
                               this.userData.uid
                             ) &&
-                            Object.values(element).includes("For Approval")
+                            Object.values(element).includes("For Approval")) && ((+ new Date().getDate() >= new Date(element.startsAt).getDate()))
                           ) {
                             // console.log(element)
                             // console.log('it exists')
                             this.myForApprovalTasks.push(element);
                           }
                           if (
-                            Object.values(element).includes(
+                            (Object.values(element).includes(
                               this.userData.uid
                             ) &&
-                            Object.values(element).includes("Accomplished")
+                            Object.values(element).includes("Accomplished")) && ((+ new Date().getDate() >= new Date(element.startsAt).getDate()))
                           ) {
                             // console.log(element)
                             // console.log('it exists')
@@ -430,30 +430,30 @@ export class DashboardComponent implements OnInit {
                             this.myPendingTasks.push(element);
                           }
                           if (
-                            Object.values(element).includes(
+                            (Object.values(element).includes(
                               this.userData.uid
                             ) &&
-                            Object.values(element).includes("No Submission")
+                            Object.values(element).includes("No Submission")) && ((+ new Date().getDate() >= new Date(element.startsAt).getDate()))
                           ) {
                             // console.log(element)
                             // console.log('it exists')
                             this.myLateTasks.push(element);
                           }
                           if (
-                            Object.values(element).includes(
+                            (Object.values(element).includes(
                               this.userData.uid
                             ) &&
-                            Object.values(element).includes("For Approval")
+                            Object.values(element).includes("For Approval")) && ((+ new Date().getDate() >= new Date(element.startsAt).getDate()))
                           ) {
                             // console.log(element)
                             // console.log('it exists')
                             this.myForApprovalTasks.push(element);
                           }
                           if (
-                            Object.values(element).includes(
+                            (Object.values(element).includes(
                               this.userData.uid
                             ) &&
-                            Object.values(element).includes("Accomplished")
+                            Object.values(element).includes("Accomplished")) && ((+ new Date().getDate() >= new Date(element.startsAt).getDate()))
                           ) {
                             // console.log(element)
                             // console.log('it exists')
@@ -531,30 +531,30 @@ export class DashboardComponent implements OnInit {
                             this.myPendingTasks.push(element);
                           }
                           if (
-                            Object.values(element).includes(
+                            (Object.values(element).includes(
                               this.userData.uid
                             ) &&
-                            Object.values(element).includes("No Submission")
+                            Object.values(element).includes("No Submission")) && ((+ new Date().getDate() >= new Date(element.startsAt).getDate()))
                           ) {
                             // console.log(element)
                             // console.log('it exists')
                             this.myLateTasks.push(element);
                           }
                           if (
-                            Object.values(element).includes(
+                            (Object.values(element).includes(
                               this.userData.uid
                             ) &&
-                            Object.values(element).includes("For Approval")
+                            Object.values(element).includes("For Approval")) && ((+ new Date().getDate() >= new Date(element.startsAt).getDate()))
                           ) {
                             // console.log(element)
                             // console.log('it exists')
                             this.myForApprovalTasks.push(element);
                           }
                           if (
-                            Object.values(element).includes(
+                            (Object.values(element).includes(
                               this.userData.uid
                             ) &&
-                            Object.values(element).includes("Accomplished")
+                            Object.values(element).includes("Accomplished")) && ((+ new Date().getDate() >= new Date(element.startsAt).getDate()))
                           ) {
                             // console.log(element)
                             // console.log('it exists')
@@ -632,30 +632,30 @@ export class DashboardComponent implements OnInit {
                             this.myPendingTasks.push(element);
                           }
                           if (
-                            Object.values(element).includes(
+                            (Object.values(element).includes(
                               this.userData.uid
                             ) &&
-                            Object.values(element).includes("No Submission")
+                            Object.values(element).includes("No Submission")) && ((+ new Date().getDate() >= new Date(element.startsAt).getDate()))
                           ) {
                             // console.log(element)
                             // console.log('it exists')
                             this.myLateTasks.push(element);
                           }
                           if (
-                            Object.values(element).includes(
+                            (Object.values(element).includes(
                               this.userData.uid
                             ) &&
-                            Object.values(element).includes("For Approval")
+                            Object.values(element).includes("For Approval")) && ((+ new Date().getDate() >= new Date(element.startsAt).getDate()))
                           ) {
                             // console.log(element)
                             // console.log('it exists')
                             this.myForApprovalTasks.push(element);
                           }
                           if (
-                            Object.values(element).includes(
+                            (Object.values(element).includes(
                               this.userData.uid
                             ) &&
-                            Object.values(element).includes("Accomplished")
+                            Object.values(element).includes("Accomplished")) && ((+ new Date().getDate() >= new Date(element.startsAt).getDate()))
                           ) {
                             // console.log(element)
                             // console.log('it exists')
