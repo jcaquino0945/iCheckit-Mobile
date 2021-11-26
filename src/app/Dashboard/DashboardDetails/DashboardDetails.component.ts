@@ -113,6 +113,7 @@ export class DashboardDetailsComponent implements OnInit {
     ).then(() => {
       let updatedTaskData = {
         createdAt: this.taskData.createdAt,
+        startsAt: this.taskData.startsAt,                      
         deadline: this.taskData.deadline,                      
         description: this.taskData.description,
         displayName: this.taskData.displayName,
