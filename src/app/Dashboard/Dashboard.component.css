@@ -68,7 +68,7 @@ h2 {
   margin-right: 10;
 } */
 
-.task-details-accomplished{
+/* .task-details-accomplished{
   border-left-color: green;
 }
 
@@ -82,7 +82,7 @@ h2 {
 
 .task-details-approval {
   border-left-color: orange;
-}
+} */
 
 .task-details-verify {
   border-left-color: #35414f;
@@ -93,9 +93,9 @@ h2 {
 .task-details-late,
 .task-details-approval,
 .task-details-verify {
-  border-left-width: 3;
   font-size: 18;
   font-family: "Antonio-Regular";
+  width: 340;
 }
 .task-deadline {
   color: gray;
@@ -112,7 +112,6 @@ h2 {
 .icon-pending,
 .icon-ok,
 .icon-approval {
-  margin-left: 150;
   margin-top: 13;
 }
 .rectangle-late {
@@ -132,7 +131,6 @@ h2 {
 }
 
 .icon-late {
-  margin-left: 156;
   color: red;
 }
 
